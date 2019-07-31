@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button } from 'antd';
+
 import {Provider } from 'mobx-react'
 import Store from './store'
 import Page from './page'
