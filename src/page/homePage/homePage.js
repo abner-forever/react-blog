@@ -18,7 +18,7 @@ class MobxDemo extends Component {
     let {sourceData } = this.store
     return (
       <div>
-        {/* <ul>
+        <ul>
           {
             sourceData && sourceData.map((item,index)=>(
               <li key={index}>
@@ -27,7 +27,7 @@ class MobxDemo extends Component {
               </li>
             ))
           }
-        </ul> */}
+        </ul>
         <p>home</p>
       </div>
     );
