@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { observer, inject } from 'mobx-react'
-import List from './List'
-// @inject('homePage')
-// @observer
+import { observer, inject } from 'mobx-react'
+import './homePage.scss'
+@inject('homePage')
+@observer
 class MobxDemo extends Component {
   constructor(props) {
     super(props)
@@ -18,12 +18,21 @@ class MobxDemo extends Component {
   }
 
   componentDidMount() {
-    // this.store.initData() //初始化数据
+    this.store.onGetArticle() //初始化数据
   }
 
   render() {
     return (
-      <List />
+      <div>
+        {
+          this.store.articleList &&  this.store.articleList.map((item)=>(
+            <div key={item.articleId}>
+              <p>{item.title}</p>
+              <p className = 'contents'>{item.contents}</p>
+            </div>
+          ))  
+        }
+      </div>
     );
   }
 }
