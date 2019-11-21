@@ -1,5 +1,6 @@
 import React from 'react'
 // 引入编辑器组件
+import '../../styles/index.scss'
 import BraftEditor from 'braft-editor'
 // 引入编辑器样式
 import 'braft-editor/dist/index.css'
@@ -36,7 +37,7 @@ export default class EditorDemo extends React.Component {
         const { editorState } = this.state
         return (
             <div>
-                <div className="my-component">
+                <div className="braft-editor">
                     <BraftEditor
                         value={editorState}
                         onChange={this.handleEditorChange}
