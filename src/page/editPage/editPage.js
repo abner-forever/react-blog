@@ -1,35 +1,29 @@
-import React, { Component } from 'react';
-
-import { observer, inject } from 'mobx-react'
-
+import React from 'react'
 import Editor from '../../components/Editor'
-
+// 引入编辑器样式
+import 'braft-editor/dist/index.css'
+import { observer, inject } from 'mobx-react'
 @inject('homePage')
 @observer
-class MobxDemo extends Component {
+class EditorPage extends React.Component {
   constructor(props) {
     super(props)
     this.store = this.props.homePage
   }
-  componentWillMount(){
-    
-  }
-  componentDidMount() {
-    this.store.onGetEditText() //初始化数据
-    console.log('this.store.editText',this.store.editText);
-    
-  }
 
   render() {
-    // let { sourceData } = this.store
+
     return (
       <div>
-        <div className=''>
-          {this.store.editText && <Editor editText = {this.store.editText} />
-}
-        </div>
+        {
+          this.store.editText && <Editor
+            editText={this.store.editText}
+          />
+        }
+
       </div>
-    );
+    )
+
   }
 }
-export default MobxDemo
+export default EditorPage

@@ -6,14 +6,8 @@ import './homePage.scss'
 class MobxDemo extends Component {
   constructor(props) {
     super(props)
-
     this.store = this.props.homePage
     this.state = {
-      data: [
-        { id: 0, text: '天气不错哦!!!', isCheck: false, complete: false },
-        { id: 1, text: '天气不错哦!!!', isCheck: false, complete: false },
-        { id: 2, text: '出去玩啊!!!', isCheck: false, complete: true },
-      ]
     }
   }
 
@@ -22,15 +16,18 @@ class MobxDemo extends Component {
   }
 
   render() {
+    console.log('this.store.articleList', this.store.articleList.list);
+
     return (
       <div>
         {
-          this.store.articleList &&  this.store.articleList.map((item)=>(
-            <div key={item.articleId}>
-              <p>{item.title}</p>
-              <p className = 'contents'>{item.contents}</p>
+          this.store.articleList.list && this.store.articleList.list.map((item) => (
+            <div key={item.articleId} onClick={() => this.store.onGetEditText(item.title)}>
+              <div>作者: {item.userName}</div>
+              <p>标题: {item.title}</p>
+              <p className='contents'>{item.contents}</p>
             </div>
-          ))  
+          ))
         }
       </div>
     );
