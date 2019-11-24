@@ -33,4 +33,5 @@ class MobxDemo extends Component {
     );
   }
 }
+
 export default MobxDemo
