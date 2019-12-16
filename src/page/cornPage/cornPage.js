@@ -28,7 +28,7 @@ export default class CornPage extends Component {
                     lang='zh_CN'
                     type={['second', 'minute', 'hour', 'day', 'month', 'week']}
                 />
-                <div >
+                <div style={{marginTop:45}}>
                     <Button onClick={this.sendCron} type="primary">发送</Button>
                 </div>
             </div>
