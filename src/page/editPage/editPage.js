@@ -24,7 +24,7 @@ export default class EditorDemo extends React.Component {
     submitContent = async () => {
         // 在编辑器获得焦点时按下ctrl+s会执行此方法
         // 编辑器内容提交到服务端之前，可直接调用editorState.toHTML()来获取HTML格式的内容
-        const htmlContent = this.state.editorState.toHTML()
+        // const htmlContent = this.state.editorState.toHTML()
         // const result = await saveEditorContent(htmlContent)
     }
 

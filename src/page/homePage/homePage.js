@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles/index.scss'
+
 // import { observer, inject } from 'mobx-react'
 // @inject('homePage')
 // @observer
@@ -20,9 +21,7 @@ class MobxDemo extends Component {
 
   render() {
     return (
-      // <List />
       <div>
-        <p></p>
       </div>
     );
   }

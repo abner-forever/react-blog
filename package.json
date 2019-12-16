@@ -6,18 +6,17 @@
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "antd": "^3.13.5",
     "babel-plugin-import": "^1.11.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "braft-editor": "^2.3.7",
+    "cron-editor-react": "^3.0.1",
     "customize-cra": "^0.2.11",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.4",
-    "node-sass": "^4.13.0",
     "react": "^16.8.2",
     "react-app-rewired": "^2.1.0",
+    "react-crons": "^1.7.2",
     "react-dom": "^16.8.2",
     "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.5",
-    "sass": "^1.23.7",
     "scss": "^0.2.4"
   },
   "scripts": {
@@ -36,6 +35,9 @@
   ],
   "proxy": "http://localhost:3000",
   "devDependencies": {
-    "http-proxy-middleware": "^0.19.1"
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "http-proxy-middleware": "^0.19.1",
+    "node-sass": "^4.13.0",
+    "sass": "^1.23.7"
   }
 }
