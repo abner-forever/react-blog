@@ -1,5 +1,6 @@
+import React,{ReactDOM} from "react";
 import { observable, action } from 'mobx';
-
+import { Alert } from 'antd';
 const axios = require('axios');
 class Demo {
    @observable articleList = [];
@@ -7,14 +8,14 @@ class Demo {
    @observable editArticle = null
    @action onGetEditText = (id) => {
       let url = 'http://localhost:3000/api/article/getArticle'
-      return new Promise((resolve, reject)=>{
+      return new Promise((resolve, reject) => {
          axios.get(url, {
             params: {
                id: id
             }
          }).then((res) => {
-            this.editArticle =  res.data.data[0]
-            this.editText = res.data.data[0].contents
+            this.editArticle = res.data.data[0]
+            this.editText = JSON.parse(res.data.data[0].contents)
             resolve(res)
          }).catch((err) => {
             console.warn('fetch error: 请求失败 error message :', err)
@@ -22,7 +23,12 @@ class Demo {
          })
       })
    }
-
+   @action showAlert = (message, type) => {
+      console.log('message,type', message, type);
+      return(
+         <Alert message={message} type={type} />
+      )
+   }
    @action onGetArticle = () => {
       fetch('http://localhost:3000/api/article/articleList').then(res => res.json()).then((res) => {
          console.log('文章', res.data)

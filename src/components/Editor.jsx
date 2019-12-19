@@ -3,7 +3,6 @@ import React from 'react'
 import BraftEditor from 'braft-editor'
 // 引入编辑器样式
 import 'braft-editor/dist/index.css'
-
 const axios = require('axios');
 class EditorDemo extends React.Component {
 
@@ -15,7 +14,7 @@ class EditorDemo extends React.Component {
     async componentDidMount() {
         // 假设此处从服务端获取html格式的编辑器内容
         const htmlContent = await this.props.editText
-        console.log('htmlContent', htmlContent);
+        console.log('this.props.editArticle', this.props.editArticle);
 
         // 使用BraftEditor.createEditorState将html字符串转换为编辑器需要的editorStat
         this.setState({
@@ -26,10 +25,10 @@ class EditorDemo extends React.Component {
     submitContent = async (editArticle) => {
         // 在编辑器获得焦点时按下ctrl+s会执行此方法
         // 编辑器内容提交到服务端之前，可直接调用editorState.toHTML()来获取HTML格式的内容
-        const htmlContent = this.state.editorState.toHTML()
-        console.log('保存成功', htmlContent);
-
-        const result = await this.saveEditorContent(editArticle,htmlContent)
+        const htmlContent = this.state.editorState.toRAW(true)
+        console.log('editArticle',editArticle);
+        
+        await this.saveEditorContent(editArticle,htmlContent)
     }
 
     handleEditorChange = (editorState) => {
@@ -42,11 +41,8 @@ class EditorDemo extends React.Component {
             title:editArticle.title,
             contents: htmlContent
         }
-        console.log(data);
-        
         axios.post(url, data).then((res) => {
-            console.log(res);
-
+            this.props.showAlert('保存成功','success')
         }).catch((err) => {
             console.warn('保存失败 :', err)
         })

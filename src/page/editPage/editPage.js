@@ -10,15 +10,22 @@ class EditorPage extends React.Component {
         super(props)
         this.store = this.props.homePage
     }
-
+    componentDidMount(){
+        if(!this.store.editText){
+           let articleId = this.props.location.pathname.replace('/edit/','')
+            this.store.onGetEditText(articleId)
+        }
+    }
     render() {
-
+        console.log('this.store.editArticle',this.store.editArticle);
+        
         return (
             <div>
                 {
-                    this.store.editText && <Editor
+                    this.store.editText&&this.store.editArticle && <Editor
                         editText={this.store.editText}
                         editArticle= {this.store.editArticle}
+                        showAlert= {this.store.showAlert}
                     />
                 }
                 {
