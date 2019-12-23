@@ -35,7 +35,7 @@ class EditorDemo extends React.Component {
         this.setState({ editorState })
     }
     saveEditorContent = (editArticle, htmlContent) => {
-        let url = 'http://localhost:3000/api/article/updateArticle'
+        let url = 'http://foreverheart.top/api/article/updateArticle'
         let data = {
             articleId: editArticle.articleId,
             title:editArticle.title,

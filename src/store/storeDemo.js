@@ -7,7 +7,7 @@ class Demo {
    @observable editText = ''
    @observable editArticle = null
    @action onGetEditText = (id) => {
-      let url = 'http://localhost:3000/api/article/getArticle'
+      let url = 'http://foreverheart.top/api/article/getArticle'
       return new Promise((resolve, reject) => {
          axios.get(url, {
             params: {
@@ -30,7 +30,12 @@ class Demo {
       )
    }
    @action onGetArticle = () => {
-      fetch('http://localhost:3000/api/article/articleList').then(res => res.json()).then((res) => {
+      fetch('/api/article/articleList',{
+         mode: 'cors',
+         headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+      }).then(res => res.json()).then((res) => {
          console.log('文章', res.data)
          this.articleList = res.data
       }).catch((err) => {
