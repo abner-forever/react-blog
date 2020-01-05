@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { InputCron } from 'react-crons'
-import { Button } from 'antd';
+import { Button } from 'antd'
 export default class CornPage extends Component {
     constructor(props) {
         super(props)

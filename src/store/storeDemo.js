@@ -1,13 +1,11 @@
-import React,{ReactDOM} from "react";
-import { observable, action } from 'mobx';
-import { Alert } from 'antd';
-const axios = require('axios');
+import { observable, action } from 'mobx'
+const axios = require('axios')
 class Demo {
-   @observable articleList = [];
+   @observable articleList = []
    @observable editText = ''
    @observable editArticle = null
    @action onGetEditText = (id) => {
-      let url = 'http://foreverheart.top/api/article/getArticle'
+      let url = 'http://localhost:3000/api/article/getArticle'
       return new Promise((resolve, reject) => {
          axios.get(url, {
             params: {
@@ -23,14 +21,8 @@ class Demo {
          })
       })
    }
-   @action showAlert = (message, type) => {
-      console.log('message,type', message, type);
-      return(
-         <Alert message={message} type={type} />
-      )
-   }
    @action onGetArticle = () => {
-      fetch('/api/article/articleList',{
+      fetch('http://localhost:3000/api/article/articleList',{
          mode: 'cors',
          headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -44,4 +36,4 @@ class Demo {
       })
    }
 }
-export default new Demo();
+export default new Demo()
