@@ -28,6 +28,7 @@ class EditorPage extends React.Component {
                 {
                     !this.store.editText && <Editor
                     editText={''}
+                    editArticle= {this.store.editArticle}
                 />
                 }
             </div>

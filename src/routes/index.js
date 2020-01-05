@@ -12,24 +12,26 @@ class Index extends Component {
     }
     render() {
         return (
-            <div className="container">
                 <Router >
-                    <ul className='banner'>
+                    <header className='header-container'>
+                        <ul className='banner'>
+                            {
+                                routes.map((item, index) => (
+
+                                    item.title && <li key={index}><Link to={item.path}>{item.title}</Link></li>
+                                ))
+                            }
+                        </ul>
+                    </header>
+                    <div className='content-box'>
                         {
                             routes.map((item, index) => (
-
-                                item.title && <li key={index}><Link to={item.path}>{item.title}</Link></li>
+                                <Route key={index} path={item.path} component={item.component} />
                             ))
                         }
-                    </ul>
-                    {
-                        routes.map((item, index) => (
-                            <Route key={index} path={item.path} component={item.component} />
-                        ))
-                    }
-                    <Route exact path="/" component={HomePage} />
+                        <Route exact path="/" component={HomePage} />
+                    </div>
                 </Router>
-            </div>
         )
     }
 }
