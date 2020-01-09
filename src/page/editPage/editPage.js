@@ -17,20 +17,19 @@ class EditorPage extends React.Component {
         }
     }
     render() {
-        console.log('this.store.editArticle',this.store.editArticle);
-        
         return (
             <div>
                 {
                     this.store.editText&&this.store.editArticle && <Editor
                         editText={this.store.editText}
                         editArticle= {this.store.editArticle}
-                        showAlert= {this.store.showAlert}
                     />
                 }
                 {
-                    ! this.store.editText && <Editor
-                    editText={''}
+                    !this.store.editText && <Editor
+                        editText={this.store.editText}
+                        editArticle= {this.store.editArticle}
+                        editText={''}
                 />
                 }
             </div>

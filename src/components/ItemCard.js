@@ -1,14 +1,16 @@
 import React from 'react'
-
+import './itemCard.scss'
 function ItemCard(props) {
     let item = props.item
-    console.log('item',item);
-    let desc = item.contents && (JSON.parse(item.contents).blocks[1] && JSON.parse(item.contents).blocks[1].text) || ''
+    let desc = item.contents ? (JSON.parse(item.contents).blocks[1] && JSON.parse(item.contents).blocks[1].text) : ''
     return (
-        <div key={item.articleId} onClick={() => props._onGetArticle(item)}>
-            <div>作者: {item.userName}</div>
-            <p>标题: {item.title}</p>
-            <p className='contents'>{desc}</p>
+        <div className='item-card' key={item.articleId} onClick={() => props._onGetArticle(item)}>
+                <p className='actilce-title'>{item.title}</p>
+                <p className='contents'>{desc}</p>
+                <div className='author-title'>
+                    <div>作者: {item.userName}</div>
+                    <div>{item.createTime}</div>
+                </div>
         </div>
     )
 }

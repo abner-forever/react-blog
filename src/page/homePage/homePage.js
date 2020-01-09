@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import './homePage.scss'
 
@@ -15,7 +15,7 @@ class MobxDemo extends Component {
   }
 
   componentDidMount() {
-    this.store.onGetArticle() //初始化数据
+    this.store.onGetArticleList() //初始化数据
   }
   _onGetArticle = (item) => {
     this.store.onGetEditText(item.articleId).then((res) => {
