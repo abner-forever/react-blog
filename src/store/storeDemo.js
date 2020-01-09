@@ -13,9 +13,10 @@ class Demo {
             }
          }).then((res) => {
             this.editArticle = res.data.data[0]
-            console.log('res',res,this.editArticle);
-            
             this.editText = JSON.parse(res.data.data[0].contents)
+            if(res.data.data[0].contents){
+               this.editText = JSON.parse(res.data.data[0].contents)
+            }
             resolve(res)
          }).catch((err) => {
             console.warn('fetch error: 请求失败 error message :', err)

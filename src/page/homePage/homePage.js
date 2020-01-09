@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import './homePage.scss'
 
-import Itemcard from '../../components/ItemCard'
+import Itemcard from '../../components/home/ItemCard'
 
 @inject('homePage')
 @observer
