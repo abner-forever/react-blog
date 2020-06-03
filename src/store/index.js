@@ -1,5 +1,10 @@
-import homePage from './storeDemo'
+import { combineReducers } from 'redux'
+import todos from './reducers/todos'
+import visibilityFilter from './reducers/visibilityFilter'
 
-export default{
-    homePage
-}
+const todoApp = combineReducers({
+  todos,
+  visibilityFilter
+})
+
+export default todoApp

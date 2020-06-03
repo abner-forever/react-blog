@@ -1,6 +1,7 @@
 import HomePage from '../page/homePage/homePage'
 import EditPage from '../page/editPage/editPage'
 import CornPage from '../page/cornPage/cornPage'
+import Todo from '../page/todo/App'
 const routes = [
     {
         path: '/index',
@@ -18,6 +19,10 @@ const routes = [
     {
         path: '/',
         redirect: '/index'
+    },{
+        path:'/todo',
+        component:Todo,
+        title:'待办'
     }
 ]
 export default routes
