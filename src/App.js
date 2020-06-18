@@ -8,7 +8,8 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Page />
+        {/* <Page /> */}
+        <div>12</div>
       </Provider>
     );
   }

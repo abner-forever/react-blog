@@ -30,5 +30,18 @@ export default class Commutils{
           }
         }
         return true
+    }
+    //deepClone
+    static deepClone(obj){
+      if(!obj || typeof obj !='object') return obj
+      let result = typeof obj.splice ==='function'?[]:{}
+      for(let i in obj){
+        if(typeof obj[key] === 'object'){
+          result[key] = this.deepClone(obj[key])
+        }else{
+          result[key] = obj[key]
+        }
       }
+
+    }
 }
