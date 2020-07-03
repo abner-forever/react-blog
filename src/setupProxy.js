@@ -1,5 +1,11 @@
 const proxy = require('http-proxy-middleware');
 //设置代理
-module.exports = function(app) {
-  app.use(proxy('/api', { target: 'http://foreverheart.top' ,changeOrigin: true}));
+module.exports = function (app) {
+  app.use(
+    proxy('/api',
+      {
+        target: 'http://foreverheart.top',
+        changeOrigin: true
+      })
+  );
 };

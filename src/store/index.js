@@ -1,5 +1,5 @@
-import homePage from './storeDemo'
+import storeArticle from './storeArticle'
 
 export default{
-    homePage
+    storeArticle
 }

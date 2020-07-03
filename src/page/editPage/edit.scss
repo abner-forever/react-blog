@@ -1,0 +1,30 @@
+.my-component{
+    height: 100%;
+    .title-container{
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        .title{
+            font-size: 18px;
+            font-weight: 500;
+            width: 95px;
+        }
+        .title-input{
+            width: 50%;
+            border: none;
+        }
+    }
+    .edit-content{
+        background-color: #fff;
+    }
+    .save-footer{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background-color:rgba($color: #fff, $alpha: .8);
+        padding: 20px 50px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

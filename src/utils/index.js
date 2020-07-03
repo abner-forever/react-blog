@@ -7,3 +7,5 @@ export default class Commutils{
         return url+'?'+param
     }
 }
+export const host = 'http://localhost:3000'
+// export const host = 'http://foreverheart.top'

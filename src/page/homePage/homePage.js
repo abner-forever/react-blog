@@ -1,41 +1,44 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import './homePage.scss'
-
 import Itemcard from '../../components/home/ItemCard'
 
-@inject('homePage')
+@inject('storeArticle')
 @observer
 class MobxDemo extends Component {
   constructor(props) {
     super(props)
-    this.store = this.props.homePage
-    this.state = {
-    }
+    this.store = this.props.storeArticle
   }
 
   componentDidMount() {
     this.store.onGetArticle() //初始化数据
   }
-  _onGetArticle = (item) => {
-    this.store.onGetEditText(item.articleId).then((res) => {
-      this.props.history.push(`/edit/${item.articleId}`)
+  onGetArticle = (articleId) => {
+    this.store.onGetEditText(articleId).then((res) => {
+      this.props.history.push(`/articledetail/${articleId}`)
+    })
+  }
+  editArticle = (articleId) => {
+    this.store.onGetEditText(articleId).then((res) => {
+      this.props.history.push(`/edit/${articleId}`)
     })
   }
   render() {
     return (
       <div>
         {
-          this.store.articleList.list && this.store.articleList.list.map((item,index) => (
+          this.store.articleList && this.store.articleList.map((item, index) => (
             <Itemcard
               key={index}
               item={item}
-              _onGetArticle= {this._onGetArticle}
+              onGetArticle={this.onGetArticle}
+              editArticle={this.editArticle}
             />
           ))
         }
         {
-          !this.store.articleList.list && <div>暂无数据</div>
+          !this.store.articleList && <div>暂无数据</div>
         }
       </div>
     );

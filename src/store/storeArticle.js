@@ -1,22 +1,22 @@
 import { observable, action } from 'mobx'
 const axios = require('axios')
-class Demo {
+const { host } = require('../utils')
+class Article {
    @observable articleList = []
    @observable editText = ''
    @observable editArticle = null
+   @observable isModalVisible = false
+
    @action onGetEditText = (id) => {
-      let url = 'http://localhost:3000/api/article/getArticle'
+      let url = host+'/api/article/getArticle'
+      // const url = 'http://localhost:3001/articleOne'
       return new Promise((resolve, reject) => {
          axios.get(url, {
             params: {
                id: id
             }
          }).then((res) => {
-            this.editArticle = res.data.data[0]
-            if(res.data.data[0].contents){
-               this.editText = JSON.parse(res.data.data[0].contents)
-            }
-            
+            this.editArticle = res.data.data
             resolve(res)
          }).catch((err) => {
             console.warn('fetch error: 请求失败 error message :', err)
@@ -25,18 +25,18 @@ class Demo {
       })
    }
    @action onGetArticle = () => {
-      fetch('http://localhost:3000/api/article/articleList',{
+      let url = host+'/api/article/articleList'
+      fetch(url,{
          mode: 'cors',
          headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
       }).then(res => res.json()).then((res) => {
-         console.log('文章', res.data)
-         this.articleList = res.data
+         this.articleList = res.data.list||[]
       }).catch((err) => {
          console.warn('fetch error: 请求失败 error message :', err)
          this.articleList = []
       })
    }
 }
-export default new Demo()
+export default new Article()

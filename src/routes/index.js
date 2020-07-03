@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Route,
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
 import HomePage from '../page/homePage/homePage'
 import routes from './routers'
 import '../page/index.scss'
@@ -12,26 +12,26 @@ class Index extends Component {
     }
     render() {
         return (
-                <Router >
-                    <header className='header-container'>
-                        <ul className='banner'>
-                            {
-                                routes.map((item, index) => (
-
-                                    item.title && <li key={index}><Link to={item.path}>{item.title}</Link></li>
-                                ))
-                            }
-                        </ul>
-                    </header>
-                    <div className='content-box'>
+            <Router >
+                <header className='header-container'>
+                    <ul className='banner'>
                         {
                             routes.map((item, index) => (
-                                <Route key={index} path={item.path} component={item.component} />
+
+                                item.isShowHeader && <li key={index}><Link to={item.path}>{item.title}</Link></li>
                             ))
                         }
-                        <Route exact path="/" component={HomePage} />
-                    </div>
-                </Router>
+                    </ul>
+                </header>
+                <div className='content-box'>
+                    {
+                        routes.map((item, index) => (
+                            <Route key={index} path={item.path} component={item.component} />
+                        ))
+                    }
+                    <Route exact path="/" component={HomePage} />
+                </div>
+            </Router>
         )
     }
 }

@@ -1,37 +1,30 @@
 import React from 'react'
-import Editor from '../../components/Editor'
+import Editor from './Editor'
 // 引入编辑器样式
 import 'braft-editor/dist/index.css'
 import { observer, inject } from 'mobx-react'
-@inject('homePage')
+@inject('storeArticle')
 @observer
 class EditorPage extends React.Component {
     constructor(props) {
         super(props)
-        this.store = this.props.homePage
+        this.store = this.props.storeArticle
     }
-    componentDidMount(){
-        if(!this.store.editText){
-           let articleId = this.props.location.pathname.replace('/edit/','')
+    componentDidMount() {
+        if (!this.store.editArticle) {
+            let articleId = this.props.location.pathname.replace('/edit/', '')
             this.store.onGetEditText(articleId)
         }
     }
     render() {
         return (
-            <div>
+            <>
                 {
-                    this.store.editText&&this.store.editArticle && <Editor
-                        editText={this.store.editText}
-                        editArticle= {this.store.editArticle}
+                    this.store.editArticle && <Editor
+                        editArticle={this.store.editArticle}
                     />
                 }
-                {
-                    !this.store.editText && <Editor
-                    editText={''}
-                    editArticle= {this.store.editArticle}
-                />
-                }
-            </div>
+            </>
         )
 
     }

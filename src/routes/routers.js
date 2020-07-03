@@ -1,23 +1,35 @@
 import HomePage from '../page/homePage/homePage'
-import EditPage from '../page/editPage/editPage'
-import CornPage from '../page/cornPage/cornPage'
+import EditPage from '../page/editPage/EditPage'
+import DetailPage from '../page/detailPage/DetailPage'
+import MinePage from '../page/minePage/MinePage'
+
+// 路由表配置
 const routes = [
     {
         path: '/index',
         component: HomePage,
-        title:'主页'
-    },{
+        title: '首页',
+        isShowHeader:true
+    }, {
         path: '/edit',
         component: EditPage,
-        title:'编辑'
+        title: '编辑',
+        isShowHeader:false
+    }, {
+        path: '/articledetail',
+        component: DetailPage,
+        title: '文章详情',
+        isShowHeader:false
     },{
-        path: '/cron',
-        component: CornPage,
-        title:'关于'
+        path: '/mine',
+        component: MinePage,
+        title: '关于我',
+        isShowHeader:true
     },
     {
         path: '/',
-        redirect: '/index'
+        redirect: '/index',
+        isShowHeader:false
     }
 ]
 export default routes

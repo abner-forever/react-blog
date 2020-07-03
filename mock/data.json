@@ -1,0 +1,47 @@
+{
+    "articleList": {
+        "code": "A00000",
+        "msg": "success",
+        "data": [
+            {
+                "userName": "abner",
+                "articleId": "10027",
+                "title": "标题",
+                "createTime": "",
+                "updateTime": "",
+                "description": "文章描述",
+                "contents": "文章内容"
+            },
+            {
+                "userName": "abner",
+                "articleId": "10027",
+                "title": "标题",
+                "createTime": "",
+                "updateTime": "",
+                "description": "文章描述",
+                "contents": "文章内容"
+            },
+            {
+                "userName": "abner",
+                "articleId": "10027",
+                "title": "标题",
+                "createTime": "",
+                "updateTime": "",
+                "description": "文章描述",
+                "contents": "文章内容"
+            }
+        ]
+    },
+    "articleOne":{
+        "code": "A00000",
+        "msg": "success",
+        "data":{
+            "articleId":"10027",
+            "title":"10027的标题",
+            "createTime":"",
+            "updateTime":"",
+            "description":"文章描述",
+            "contents":"{\"blocks\":[{\"key\":\"169d2\",\"text\":\"Q：做爬虫与其他开发岗位有什么不同么？\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"dflj3\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"6df3u\",\"text\":\"做爬虫这种逆向开发岗位的人通常思考问题的方式要与做正向开发的完全不同，如果你不懂得逆向思维的话你会很累。\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7ft5\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"30bd2\",\"text\":\"而且做爬虫会用到很多不同领域的知识点，如果知识面不够广，在碰到一些难搞的东西时你可能都想不到解决方案。当然这方面目前方法论也挺多的了，主流的一些操作一般都能找到对应的、统一的方法来解决。但是，总会有些能让你感到匪夷所思的东西，这时候如果你能想到一些骚操作的话很可能就是降维打击了。\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8g4s3\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3kbr3\",\"text\":\"作者：芒果果\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"834se\",\"text\":\"链接：https://segmentfault.com/a/1190000023073646\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4m08f\",\"text\":\"来源：SegmentFault 思否\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"d9o5q\",\"text\":\"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"fbuma\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"rs5h\",\"text\":\"function bubbleSort(arr){     \",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"8go9v\",\"text\":\"for(var i=0;iarr[j]){\",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"fn3qd\",\"text\":\"                 [arr[i],arr[j]] = [arr[j],arr[i]]         \",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"jk74\",\"text\":\"                    }  \",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"33c7f\",\"text\":\"       } \",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"e4c69\",\"text\":\"    }   \",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"9oq5\",\"text\":\"  return arr \",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"1sj2v\",\"text\":\"}\",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"6hhhk\",\"text\":\"\",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"c1fic\",\"text\":\"\",\"type\":\"code-block\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
+        }
+    }
+}
