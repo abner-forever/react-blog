@@ -1,6 +1,6 @@
 import HomePage from '../page/homePage/homePage'
 import EditPage from '../page/editPage/editPage'
-import CornPage from '../page/cornPage/cornPage'
+import CornPage from '../page/cornPage/CornPage'
 import Todo from '../page/todo/App'
 const routes = [
     {

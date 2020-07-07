@@ -4,7 +4,6 @@ import Todo from './Todo'
 
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>
-    <p>{JSON.stringify(todos)}</p>
     {todos.map(todo => (
       <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
     ))}
