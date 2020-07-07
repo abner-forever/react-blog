@@ -24,18 +24,20 @@ class ArticleDetail extends React.Component {
     }
     render() {
         const { title, contents,userName,updateTime,createTime } = this.props.editArticle
-
+        const htmlContent = contents
+        console.log('htmlContent',contents);
+        
         return (
             <div className='content'>
                 <p className="detail-title">{title}</p>
                 <div style={{margin:10}}>
                     <span>作者：{userName}</span>
-                    <span style={{marginLeft:8}}> 时间：{updateTime||createTime}</span>
+                    <span style={{marginLeft:8}}> 发布于：{updateTime||createTime}</span>
                    
                 </div>
                 {/* 文章内容 */}
                 <div className='articae-content braft-output-content'
-                    dangerouslySetInnerHTML={{ __html: BraftEditor.createEditorState(contents).toHTML() }} />
+                    dangerouslySetInnerHTML={{ __html: BraftEditor.createEditorState(htmlContent).toHTML() }} />
             </div>
         )
     }

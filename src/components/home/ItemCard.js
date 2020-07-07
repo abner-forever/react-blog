@@ -11,7 +11,7 @@ function ItemCard(props) {
             <div className='meta'>
                 <span>{item.userName}</span>
                 <span className='update-time'>{item.updateTime||item.createTime}</span>
-                {/* <div onClick={() => props.editArticle(item.articleId)} className='edit-icon' >编辑</div> */}
+                <div onClick={() => props.editArticle(item.articleId)} className='edit-icon' >编辑</div>
             </div>
         </div>
     )

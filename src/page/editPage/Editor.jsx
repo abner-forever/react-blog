@@ -21,7 +21,7 @@ class Editor extends React.Component {
     state = {
         editorState: BraftEditor.createEditorState(null),
         success: '',
-        articleTitle: this.props.editArticle.title
+        articleTitle: this.props.editArticle.title||'默认文章标题'
     }
 
     async componentDidMount() {
@@ -32,7 +32,7 @@ class Editor extends React.Component {
     }
     //点击保存
     submitContent = (editArticle) => {
-        const htmlContent = this.state.editorState.toRAW()
+        const htmlContent = this.state.editorState.toHTML()
         this.saveEditorContent(editArticle, htmlContent)
     }
 
@@ -41,17 +41,24 @@ class Editor extends React.Component {
     }
     //提交保存
     saveEditorContent = (editArticle, htmlContent) => {
-        let htmlJSON = JSON.parse(htmlContent)
-        let description = htmlJSON.blocks.find((item) => item.type === 'unstyled').text || ''
+        console.log(htmlContent);
+        // const contents =  JSON.stringify(htmlContent).replace(/\\"/g,'\\\\"').replace(/"/g,'\\"')
+        // let description = htmlContent.blocks.find((item) => item.type === 'unstyled').text || ''
         let url = '/api/article/updateArticle'
         let data = {
             articleId: editArticle.articleId,
             title: this.state.articleTitle,
-            description,
-            contents: htmlContent
+            description:'as',
+            contents:htmlContent
         }
         axios.post(url, data).then((res) => {
-            message.success('保存成功', res);
+            console.log(res);
+            
+            if(res.data.code === 'A0000'){
+                message.success('保存成功', res);
+            }else{
+                message.error('保存失败 :格式有误', res.code)
+            }
         }).catch((err) => {
             message.error('保存失败 :', err)
         })
@@ -79,6 +86,7 @@ class Editor extends React.Component {
                         value={editorState}
                         onChange={this.handleEditorChange}
                         onSave={this.submitContent}
+                        placeholder='请输入正文内容'
                     />
                 </div>
                 <div className='save-footer'>

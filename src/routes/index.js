@@ -8,7 +8,25 @@ import HomePage from '../page/homePage/homePage'
 import routes from './routers'
 import '../page/index.scss'
 class Index extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            currentIndex: 0
+        }
+    }
+    _setTabChange = (index) => {
+        this.setState({
+            currentIndex: index
+        })
+        localStorage.setItem('currentIndex', index)
+    }
     componentDidMount() {
+        const current = Number(localStorage.getItem('currentIndex'))
+        this.setState({
+            currentIndex: current
+        })
+        console.log(current);
+
     }
     render() {
         return (
@@ -18,7 +36,12 @@ class Index extends Component {
                         {
                             routes.map((item, index) => (
 
-                                item.isShowHeader && <li key={index}><Link to={item.path}>{item.title}</Link></li>
+                                item.isShowHeader && <li
+                                    onClick={() => this._setTabChange(index)}
+                                    key={index}
+                                    className={this.state.currentIndex === index ? 'active-tab' : 'tab-item'}>
+                                    <Link to={item.path}>{item.title}</Link>
+                                </li>
                             ))
                         }
                     </ul>

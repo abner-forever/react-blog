@@ -1,5 +1,7 @@
 .my-component{
     height: 100%;
+    padding: 8px 16px 0;
+    border: 1px solid #eee;
     .title-container{
         display: flex;
         align-items: center;
@@ -21,10 +23,14 @@
         position: fixed;
         bottom: 0;
         right: 0;
-        background-color:rgba($color: #fff, $alpha: .8);
-        padding: 20px 50px;
+        background-color:#fff;
+        padding: 8px 50px;
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        z-index: 999;
+    }
+    .bf-content{
+        height: 619px;
     }
 }

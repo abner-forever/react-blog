@@ -9,7 +9,6 @@ class Article {
 
    @action onGetEditText = (id) => {
       let url = host+'/api/article/getArticle'
-      // const url = 'http://localhost:3001/articleOne'
       return new Promise((resolve, reject) => {
          axios.get(url, {
             params: {

@@ -26,7 +26,7 @@ class MobxDemo extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='home-content'>
         {
           this.store.articleList && this.store.articleList.map((item, index) => (
             <Itemcard
