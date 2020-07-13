@@ -1,4 +1,4 @@
-import HomePage from '../page/homePage/homePage'
+import HomePage from '../page/homePage/HomePage'
 import EditPage from '../page/editPage/EditPage'
 import DetailPage from '../page/detailPage/DetailPage'
 import MinePage from '../page/minePage/MinePage'
@@ -25,11 +25,6 @@ const routes = [
         component: MinePage,
         title: '关于我',
         isShowHeader:true
-    },
-    {
-        path: '/',
-        redirect: '/index',
-        isShowHeader:false
     }
 ]
 export default routes

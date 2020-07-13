@@ -21,7 +21,12 @@ class Editor extends React.Component {
     state = {
         editorState: BraftEditor.createEditorState(null),
         success: '',
-        articleTitle: this.props.editArticle.title||'默认文章标题'
+        articleTitle: this.props.editArticle.title||'默认文章标题',
+    }
+
+    componentWillReceiveProps(nextProps,q){
+        console.log('componentWillReceiveProps',this.props.count,nextProps.count,q)
+        return true
     }
 
     async componentDidMount() {
@@ -68,12 +73,17 @@ class Editor extends React.Component {
             articleTitle: e.target.value
         })
     }
+    _clearText =()=>{
+        this.setState({
+            editorState: BraftEditor.createEditorState(null),
+        })
+    }
     render() {
         const { editorState } = this.state
         return (
             <div className="my-component">
+                <p>{'props count'+this.props.count}</p>
                 <div className='title-container'>
-                    <p className='title'>文章标题</p>
                     <Input
                         className='title-input'
                         onChange={this.onInputChange}
@@ -90,7 +100,7 @@ class Editor extends React.Component {
                     />
                 </div>
                 <div className='save-footer'>
-                    <Button onClick={() => this.clear(this.props.editArticle)}>清空</Button>
+                    <Button onClick={() => this._clearText(this.props.editArticle)}>清空</Button>
                     <Button style={{ marginLeft: 25 }} type='primary' onClick={() => this.submitContent(this.props.editArticle)}>保存</Button>
                 </div>
             </div>

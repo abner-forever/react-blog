@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
-import HomePage from '../page/homePage/homePage'
 import routes from './routers'
 import '../page/index.scss'
 class Index extends Component {
@@ -25,8 +25,6 @@ class Index extends Component {
         this.setState({
             currentIndex: current
         })
-        console.log(current);
-
     }
     render() {
         return (
@@ -52,7 +50,7 @@ class Index extends Component {
                             <Route key={index} path={item.path} component={item.component} />
                         ))
                     }
-                    <Route exact path="/" component={HomePage} />
+                    <Redirect from= '/' to = '/index' exact/>
                 </div>
             </Router>
         )

@@ -5,7 +5,7 @@ import Itemcard from '../../components/home/ItemCard'
 
 @inject('storeArticle')
 @observer
-class MobxDemo extends Component {
+class Home extends Component {
   constructor(props) {
     super(props)
     this.store = this.props.storeArticle
@@ -45,4 +45,4 @@ class MobxDemo extends Component {
   }
 }
 
-export default MobxDemo
+export default Home

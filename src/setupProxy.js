@@ -4,8 +4,8 @@ module.exports = function (app) {
   app.use(
     proxy('/api',
       {
-        target: 'http://localhost:8080',
-        // target: 'http://foreverheart.top',
+        // target: 'http://localhost:8080',
+        target: 'http://foreverheart.top',
         changeOrigin: true
       })
   );
