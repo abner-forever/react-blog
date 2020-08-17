@@ -82,7 +82,6 @@ class Editor extends React.Component {
         const { editorState } = this.state
         return (
             <div className="my-component">
-                <p>{'props count'+this.props.count}</p>
                 <div className='title-container'>
                     <Input
                         className='title-input'

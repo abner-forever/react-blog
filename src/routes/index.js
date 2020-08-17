@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import routes from './routers'
 import '../page/index.scss'
+
+import Catalog from '../components/Catalog'
 class Index extends Component {
     constructor(props) {
         super(props)
@@ -50,7 +52,8 @@ class Index extends Component {
                             <Route key={index} path={item.path} component={item.component} />
                         ))
                     }
-                    <Redirect from= '/' to = '/index' exact/>
+                    <Redirect from='/' to='/index' exact />
+                <Catalog />
                 </div>
             </Router>
         )

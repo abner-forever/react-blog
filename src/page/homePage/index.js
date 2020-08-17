@@ -12,7 +12,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.store.onGetArticleList() //初始化数据
+    console.log(' this.store', this.store);
+    this.store.onGetArticle() //初始化数据
   }
   onGetArticle = (articleId) => {
     this.store.onGetEditText(articleId).then((res) => {

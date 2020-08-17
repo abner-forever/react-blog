@@ -1,7 +1,7 @@
-import HomePage from '../page/homePage/HomePage'
-import EditPage from '../page/editPage/EditPage'
-import DetailPage from '../page/detailPage/DetailPage'
-import MinePage from '../page/minePage/MinePage'
+import HomePage from '../page/homePage'
+import EditPage from '../page/editPage'
+import DetailPage from '../page/detailPage'
+import MinePage from '../page/minePage'
 
 // 路由表配置
 const routes = [

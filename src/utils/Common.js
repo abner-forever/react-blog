@@ -11,6 +11,7 @@ class Common {
         return timeForat
     }
     static buildRequestUrl(url,params) {
+        if(!params) return url
         let param = ''
         for(let key in params){
             param = param+'&'+key+'='+params[key]
