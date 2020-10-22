@@ -12,11 +12,21 @@ class Common {
     }
     static buildRequestUrl(url,params) {
         if(!params) return url
-        let param = ''
+        let param = []
         for(let key in params){
-            param = param+'&'+key+'='+params[key]
+           param.push(`${key}=${params[key]}`)
         }
-        return url+'?'+param
+        console.log('param');
+        return url+'?'+param.join('&')
+    }
+    static getkey(obj) {
+        var arr = []
+        var str = ''
+        for (const key in obj) {
+            arr.push(key + "=" + obj[key])
+        }
+        str = arr.join('&')
+        return str
     }
 }
 

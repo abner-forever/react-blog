@@ -1,32 +1,30 @@
-import React from 'react'
+import React, {
+    useEffect,
+    useObserver
+} from 'react'
 import ArticleDetail from '../../components/ArticleDetail'
 // 引入编辑器样式
 import 'braft-editor/dist/index.css'
-import { observer, inject } from 'mobx-react'
-@inject('storeArticle')
-@observer
-class MinePage extends React.Component {
-    constructor(props) {
-        super(props)
-        this.store = this.props.storeArticle
-    }
-    componentDidMount() {
-        if (!this.store.editText) {
+// import { useLocalStore, useObserver } from 'mobx-react';
+// @inject('storeArticle')
+// @observer
+const MinePage = (props) => {
+    let storeArticle = props.storeArticle
+    useEffect(() => {
+        if (props.storeArticle) {
             this.store.onGetEditText('100023')
         }
-    }
-    render() {
-        return (
-            <div>
-                {
-                    this.store.editArticle &&  <ArticleDetail
-                    editArticle={this.store.editArticle}
-                />
-                }
-               
-            </div>
-        )
-
-    }
+    })
+    return(
+        <p>mine</p>
+    )
+    // return useObserver(() => (
+    //     <div>
+    //         {props.storeArticle && < ArticleDetail
+    //             editArticle={props.editArticle}
+    //         />
+    //         }
+    //     </div>
+    // ))
 }
 export default MinePage

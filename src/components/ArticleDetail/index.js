@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/articleDetails.scss'
+import './style.scss'
 import 'braft-editor/dist/output.css'
 import BraftEditor from 'braft-editor'
 
@@ -17,20 +17,16 @@ BraftEditor.use(CodeHighlighter({
 class ArticleDetail extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-        }
     }
     componentDidMount() {
     }
     render() {
         const { title, contents,userName,updateTime,createTime } = this.props.editArticle
         const htmlContent = contents
-        console.log('htmlContent',contents);
-        
         return (
             <div className='content'>
                 <p className="detail-title">{title}</p>
-                <div style={{margin:10}}>
+                <div className='title-desc'>
                     <span>作者：{userName}</span>
                     <span style={{marginLeft:8}}> 发布于：{updateTime||createTime}</span>
                    
@@ -42,4 +38,4 @@ class ArticleDetail extends React.Component {
         )
     }
 }
-export default ArticleDetail
+export default ArticleDetail 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import './homePage.scss'
+import './style.scss'
 import Itemcard from '../../components/home/ItemCard'
 
 @inject('storeArticle')
@@ -9,10 +9,14 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.store = this.props.storeArticle
+    setTimeout(function(){
+      console.log('constructor',this);
+    },3000)
   }
-
   componentDidMount() {
-    console.log(' this.store', this.store);
+     this.timer = setTimeout(()=>{
+      console.log('componentDidMount',this);
+    },3000)
     this.store.onGetArticle() //初始化数据
   }
   onGetArticle = (articleId) => {
@@ -24,6 +28,9 @@ class Home extends Component {
     this.store.onGetEditText(articleId).then((res) => {
       this.props.history.push(`/edit/${articleId}`)
     })
+  }
+  componentWillUnmount(){
+    clearTimeout(this.timer)
   }
   render() {
     return (

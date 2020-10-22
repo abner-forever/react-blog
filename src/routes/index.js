@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import {
     BrowserRouter as Router,
     Route,
     Link,
-    Redirect
+    Redirect,
+    Switch
 } from "react-router-dom";
 import routes from './routers'
 import '../page/index.scss'
-
-import Catalog from '../components/Catalog'
+import Loading from '../components/Loading'
+// import Catalog from '../components/Catalog'
 class Index extends Component {
     constructor(props) {
         super(props)
@@ -46,15 +47,18 @@ class Index extends Component {
                         }
                     </ul>
                 </header>
-                <div className='content-box'>
-                    {
-                        routes.map((item, index) => (
-                            <Route key={index} path={item.path} component={item.component} />
-                        ))
-                    }
-                    <Redirect from='/' to='/index' exact />
-                <Catalog />
-                </div>
+                {/* <Switch> */}
+                    <Suspense fallback={<div><Loading /></div>} >
+                        <div className='content-box'>
+                            <Redirect exact from='/' to="/index" />
+                            {
+                                routes.map((item, ind) => (
+                                    <Route exact={item.exact} key={ind} path={item.path} component={item.component} />
+                                ))
+                            }
+                        </div>
+                    </Suspense>
+                {/* </Switch> */}
             </Router>
         )
     }

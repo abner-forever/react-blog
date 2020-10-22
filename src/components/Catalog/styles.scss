@@ -1,11 +1,10 @@
 .catalog-content{
-    position: fixed;
-    top: 65px;
-    // right: -100px;
-    left: -100px;
+    position: absolute;
+    top: 0;
+    right: 30px;
     background:#fff;
     width: 240px;
     padding:8px;
-    border-radius: 4px;
+    border-radius: 2px;
     min-height: 200px;
 }

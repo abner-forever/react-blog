@@ -8,7 +8,7 @@ import './edit.scss'
 
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
 import { message, Button, Input } from 'antd'
-const axios = require('axios');
+import ApiBlog from  '../../api/apiBlog'
 
 const options = {
     includeEditors: ['editor-id-1'], // 指定该模块对哪些BraftEditor生效，不传此属性则对所有BraftEditor有效
@@ -24,11 +24,6 @@ class Editor extends React.Component {
         articleTitle: this.props.editArticle.title||'默认文章标题',
     }
 
-    componentWillReceiveProps(nextProps,q){
-        console.log('componentWillReceiveProps',this.props.count,nextProps.count,q)
-        return true
-    }
-
     async componentDidMount() {
         const htmlContent = await this.props.editArticle.contents
         this.setState({
@@ -37,36 +32,30 @@ class Editor extends React.Component {
     }
     //点击保存
     submitContent = (editArticle) => {
-        const htmlContent = this.state.editorState.toHTML()
+        const htmlContent = this.state.editorState.toRAW()
+        console.log(htmlContent);
+        return
         this.saveEditorContent(editArticle, htmlContent)
     }
 
     handleEditorChange = (editorState) => {
         this.setState({ editorState })
+        this.ubmitContent()
     }
     //提交保存
-    saveEditorContent = (editArticle, htmlContent) => {
-        console.log(htmlContent);
-        // const contents =  JSON.stringify(htmlContent).replace(/\\"/g,'\\\\"').replace(/"/g,'\\"')
-        // let description = htmlContent.blocks.find((item) => item.type === 'unstyled').text || ''
-        let url = '/api/article/updateArticle'
-        let data = {
+    saveEditorContent = async (editArticle, htmlContent) => {
+        let params = {
             articleId: editArticle.articleId,
             title: this.state.articleTitle,
             description:'as',
             contents:htmlContent
         }
-        axios.post(url, data).then((res) => {
-            console.log(res);
-            
-            if(res.data.code === 'A0000'){
-                message.success('保存成功', res);
-            }else{
-                message.error('保存失败 :格式有误', res.code)
-            }
-        }).catch((err) => {
-            message.error('保存失败 :', err)
-        })
+        console.log(1);
+        let res = await ApiBlog.updateArticle(params,'save')
+        console.log('res',res);
+        if(res){
+            message.success('保存成功');
+        }
     }
     onInputChange = (e) => {
         this.setState({

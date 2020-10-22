@@ -1,30 +1,35 @@
-import HomePage from '../page/homePage'
-import EditPage from '../page/editPage'
-import DetailPage from '../page/detailPage'
-import MinePage from '../page/minePage'
+import React from 'react'
 
 // 路由表配置
 const routes = [
     {
         path: '/index',
-        component: HomePage,
+        component: React.lazy(()=>import('../page/homePage')),
+        exact: true,
         title: '首页',
         isShowHeader:true
     }, {
         path: '/edit',
-        component: EditPage,
+        component: React.lazy(()=>import('../page/editPage')),
         title: '编辑',
         isShowHeader:false
     }, {
         path: '/articledetail',
-        component: DetailPage,
+        component: React.lazy(()=>import('../page/detailPage')),
         title: '文章详情',
         isShowHeader:false
     },{
         path: '/mine',
-        component: MinePage,
+        component: React.lazy(()=>import('../components/WallPaper')),
         title: '关于我',
+        exact: true,
         isShowHeader:true
     }
+    // ,{
+    //     path: '/',
+    //     component: React.lazy(()=>import('../page/homePage')),
+    //     title: '首页',
+    //     isShowHeader:false
+    // }
 ]
 export default routes
