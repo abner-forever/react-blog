@@ -40,7 +40,7 @@ class Editor extends React.Component {
 
     handleEditorChange = (editorState) => {
         this.setState({ editorState })
-        this.ubmitContent()
+        this.submitContent()
     }
     //提交保存
     saveEditorContent = async (editArticle, htmlContent) => {
@@ -50,7 +50,6 @@ class Editor extends React.Component {
             description:'as',
             contents:htmlContent
         }
-        console.log(1);
         let res = await ApiBlog.updateArticle(params,'save')
         console.log('res',res);
         if(res){
