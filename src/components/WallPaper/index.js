@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 const WallPaper = () => {
     let defaultImg = 'https://infinitypro-img.infinitynewtab.com/findaphoto/bigLink/8619.jpg?imageMogr2/auto-orient/thumbnail/1000x/blur/1x0/quality/75|imageslim'
     let [imgUrl, setImgurl] = useState(defaultImg)
-    let [size, setSize] = useState({ width: '900px', height: '600px' })
+    let [size] ={ width: '900px', height: '600px' }
     const getImage = () => {
         let url = `https://infinity-api.infinitynewtab.com/random-wallpaper?_=${Date.now()}`
         fetch(url).then(response => response.json()).then((res) => {

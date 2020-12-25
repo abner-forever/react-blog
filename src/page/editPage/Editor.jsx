@@ -34,7 +34,6 @@ class Editor extends React.Component {
     submitContent = (editArticle) => {
         const htmlContent = this.state.editorState.toRAW()
         console.log(htmlContent);
-        return
         this.saveEditorContent(editArticle, htmlContent)
     }
 

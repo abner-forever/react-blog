@@ -3,8 +3,7 @@ import {
     BrowserRouter as Router,
     Route,
     Link,
-    Redirect,
-    Switch
+    Redirect
 } from "react-router-dom";
 import routes from './routers'
 import '../page/index.scss'

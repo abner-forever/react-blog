@@ -15,11 +15,7 @@ BraftEditor.use(CodeHighlighter({
 
 //文章详细信息
 class ArticleDetail extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-    }
+
     render() {
         const { title, contents,userName,updateTime,createTime } = this.props.editArticle
         const htmlContent = contents
