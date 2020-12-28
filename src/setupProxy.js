@@ -1,8 +1,9 @@
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 //设置代理
 module.exports = function (app) {
   app.use(
-    proxy('/api',
+    createProxyMiddleware('/api',
       {
         target: 'http://foreverheart.top',
         // target: 'http://localhost:8080',
