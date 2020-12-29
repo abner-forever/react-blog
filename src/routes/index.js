@@ -33,7 +33,6 @@ class Index extends Component {
                     <ul className='banner'>
                         {
                             routes.map((item, index) => (
-
                                 item.isShowHeader && <li
                                     onClick={() => this._setTabChange(index)}
                                     key={index}
@@ -45,6 +44,9 @@ class Index extends Component {
                     </ul>
                 </header>
                     <Suspense fallback={<div><Loading /></div>} >
+                        <div>
+                            
+                        </div>
                         <div className='content-box'>
                             {
                                 routes.map((item, ind) => (

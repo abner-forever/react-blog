@@ -8,7 +8,7 @@ import './edit.scss'
 
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
 import { message, Button, Input } from 'antd'
-import ApiBlog from  '../../api/apiBlog'
+import ApiBlog from '@/api/apiBlog'
 
 const options = {
     includeEditors: ['editor-id-1'], // 指定该模块对哪些BraftEditor生效，不传此属性则对所有BraftEditor有效
@@ -21,7 +21,7 @@ class Editor extends React.Component {
     state = {
         editorState: BraftEditor.createEditorState(null),
         success: '',
-        articleTitle: this.props.editArticle.title||'默认文章标题',
+        articleTitle: this.props.editArticle.title || '默认文章标题',
     }
 
     async componentDidMount() {
@@ -33,25 +33,23 @@ class Editor extends React.Component {
     //点击保存
     submitContent = (editArticle) => {
         const htmlContent = this.state.editorState.toRAW()
-        console.log(htmlContent);
         this.saveEditorContent(editArticle, htmlContent)
     }
 
     handleEditorChange = (editorState) => {
         this.setState({ editorState })
-        this.submitContent()
     }
     //提交保存
     saveEditorContent = async (editArticle, htmlContent) => {
+        const desc = JSON.parse(htmlContent)?.blocks[0]?.text
         let params = {
-            articleId: editArticle.articleId,
+            articleId: editArticle?.articleId,
             title: this.state.articleTitle,
-            description:'as',
-            contents:htmlContent
+            description: desc,
+            contents: htmlContent
         }
-        let res = await ApiBlog.updateArticle(params,'save')
-        console.log('res',res);
-        if(res){
+        let res = await ApiBlog.updateArticle(params, 'save')
+        if (res) {
             message.success('保存成功');
         }
     }
@@ -60,13 +58,15 @@ class Editor extends React.Component {
             articleTitle: e.target.value
         })
     }
-    _clearText =()=>{
+    _clearText = () => {
         this.setState({
             editorState: BraftEditor.createEditorState(null),
         })
     }
+
     render() {
         const { editorState } = this.state
+        const { editArticle } = this.props
         return (
             <div className="my-component">
                 <div className='title-container'>
@@ -81,13 +81,13 @@ class Editor extends React.Component {
                         id="editor-with-code-highlighter"
                         value={editorState}
                         onChange={this.handleEditorChange}
-                        onSave={this.submitContent}
+                        onSave={() => this.submitContent(editArticle)}
                         placeholder='请输入正文内容'
                     />
                 </div>
                 <div className='save-footer'>
-                    <Button onClick={() => this._clearText(this.props.editArticle)}>清空</Button>
-                    <Button style={{ marginLeft: 25 }} type='primary' onClick={() => this.submitContent(this.props.editArticle)}>保存</Button>
+                    <Button onClick={() => this._clearText(editArticle)}>清空</Button>
+                    <Button style={{ marginLeft: 25 }} type='primary' onClick={() => this.submitContent(editArticle)}>保存</Button>
                 </div>
             </div>
         )

@@ -1,4 +1,6 @@
-import Common from '../utils/Common'
+import Common from '@/utils/Common'
+import { message } from 'antd'
+
 
 export default class Fetch{
     static get(url,params){
@@ -9,7 +11,7 @@ export default class Fetch{
                     if(res.code === 'A0000'){
                         resolve(res.data)
                     }else{
-                        reject(res.msg)
+                        message.warn(res.msg)
                     }
                 }).catch((err)=>{
                     reject(err)
@@ -17,7 +19,6 @@ export default class Fetch{
         })
     }
     static post(url,params){
-        console.log('params',params);
         let req = new Request(url,{
             method:'POST',
             headers:{'Content-Type': 'application/json;charset=UTF-8'},

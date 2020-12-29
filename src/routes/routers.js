@@ -3,6 +3,13 @@ import React from 'react'
 // 路由表配置
 const routes = [
     {
+        path: '/',
+        component: React.lazy(()=>import('../page/homePage')),
+        exact: true,
+        title: '首页',
+        isShowHeader:false
+    },
+    {
         path: '/index',
         component: React.lazy(()=>import('../page/homePage')),
         exact: true,
@@ -25,11 +32,11 @@ const routes = [
         exact: true,
         isShowHeader:true
     }
-    // ,{
-    //     path: '/',
-    //     component: React.lazy(()=>import('../page/homePage')),
-    //     title: '首页',
-    //     isShowHeader:false
-    // }
+    ,{
+        path: '/login',
+        component: React.lazy(()=>import('../page/Login')),
+        title: '登录',
+        isShowHeader:false
+    }
 ]
 export default routes

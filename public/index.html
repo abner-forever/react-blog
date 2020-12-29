@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/header.ico" />
-    <meta
-      name="viewport"
-      
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta name="theme-color" content="#000000" />
-    <title>Abner的博客</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/header.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <title>Abner的博客</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.min.js"></script>
+  <script type="text/javascript">
+    L2Dwidget.init({
+
+      "display": {
+        "position": "left", // 定位位置（"left"/"right"/"top"/"bottom"）
+        "width": 80, // 宽度
+        "height": 150, // 高度
+        "hOffset": 0,
+        "vOffset": 10
+      },
+      "mobile": {
+        "show": false,
+        "scale": 1
+      },
+      "react": {
+        "opacityDefault": 1, // 透明度
+        "opacityOnHover": 0.2
+      },
+
+      "dialog": {
+        enable: true,
+        script: {
+          'tap body': '哎呀，你个小坏蛋别摸人家啦',
+          'tap face': '哼',
+        }
+      }
+    });
+  </script>
+</body>
+
 </html>

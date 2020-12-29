@@ -5,8 +5,8 @@ module.exports = function (app) {
   app.use(
     createProxyMiddleware('/api',
       {
-        target: 'http://foreverheart.top',
-        // target: 'http://localhost:8080',
+        // target: 'http://foreverheart.top',
+        target: 'http://localhost:8080',
         changeOrigin: true
       })
   );
