@@ -27,7 +27,7 @@ const routes = [
         isShowHeader:false
     },{
         path: '/mine',
-        component: React.lazy(()=>import('../components/WallPaper')),
+        component: React.lazy(()=>import('../page/minePage')),
         title: '关于我',
         exact: true,
         isShowHeader:true

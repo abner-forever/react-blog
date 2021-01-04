@@ -26,6 +26,7 @@ class Editor extends React.Component {
 
     async componentDidMount() {
         const htmlContent = await this.props.editArticle.contents
+        console.log(' BraftEditor.createEditorState(htmlContent)',JSON.parse(htmlContent));
         this.setState({
             editorState: BraftEditor.createEditorState(htmlContent)
         })
@@ -41,17 +42,17 @@ class Editor extends React.Component {
     }
     //提交保存
     saveEditorContent = async (editArticle, htmlContent) => {
-        const desc = JSON.parse(htmlContent)?.blocks[0]?.text
+        // let contents = htmlContent.replace('\\', '\\\\')
+        console.log('contents',JSON.parse(htmlContent));
+        const desc = '1'
         let params = {
-            articleId: editArticle?.articleId,
+            id: editArticle.id,
             title: this.state.articleTitle,
             description: desc,
             contents: htmlContent
         }
-        let res = await ApiBlog.updateArticle(params, 'save')
-        if (res) {
-            message.success('保存成功');
-        }
+       await ApiBlog.updateArticle(params, 'save')
+        message.success('保存成功');
     }
     onInputChange = (e) => {
         this.setState({

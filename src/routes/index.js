@@ -5,7 +5,7 @@ import {
     Link
 } from "react-router-dom";
 import routes from './routers'
-import '../page/index.scss'
+import '@/page/index.scss'
 import Loading from '../components/Loading'
 class Index extends Component {
     constructor(props) {
@@ -41,6 +41,9 @@ class Index extends Component {
                                 </li>
                             ))
                         }
+                        <li className='tab-item-login'>
+                            <a href="/login">登录</a>
+                        </li>
                     </ul>
                 </header>
                     <Suspense fallback={<div><Loading /></div>} >

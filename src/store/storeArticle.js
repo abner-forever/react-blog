@@ -1,5 +1,5 @@
 import { observable, action,runInAction } from 'mobx'
-import ApiBlog from  '../api/apiBlog'
+import ApiBlog from  '@/api/apiBlog'
 class Article {
    @observable articleList = []
    @observable editText = ''

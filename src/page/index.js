@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss'
-import RouteView from '../routes'
+import RouteView from '@/routes'
 class Index extends Component {
 
     render() {

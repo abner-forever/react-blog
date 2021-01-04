@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.banner{
+  position: relative;
+}
+.tab-item-login{
+    position: absolute;
+    right: .5rem;
+    top: 0;
+}

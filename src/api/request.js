@@ -8,13 +8,13 @@ export default class Fetch{
         return new Promise((resolve,reject)=>{
             fetch(requestUrl).then(response=>response.json())
                 .then((res)=>{
-                    if(res.code === 'A0000'){
+                    if(res.code === 200){
                         resolve(res.data)
                     }else{
                         message.warn(res.msg)
                     }
                 }).catch((err)=>{
-                    reject(err)
+                    message.warn(err.msg)
                 })
         })
     }
@@ -27,14 +27,13 @@ export default class Fetch{
         return new Promise((resolve,reject)=>{
             fetch(req).then(response=>response.json())
                 .then((res)=>{
-                    console.log('request',res);
-                    if(res.code === 'A0000'){
-                        resolve(res.msg)
+                    if(res.code === 200){
+                        resolve(res.data)
                     }else{
-                        reject(res.msg)
+                        message.warn(res.msg)
                     }
                 }).catch((err)=>{
-                    reject(err)
+                    message.warn(err.msg)
                 })
         })
     }

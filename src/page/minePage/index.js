@@ -1,30 +1,36 @@
-import React, {
-    useEffect,
-    useObserver
-} from 'react'
-import ArticleDetail from '../../components/ArticleDetail'
+import React, { useEffect, useState } from 'react'
 // 引入编辑器样式
 import 'braft-editor/dist/index.css'
-// import { useLocalStore, useObserver } from 'mobx-react';
-// @inject('storeArticle')
-// @observer
+import Cookies from "js-cookie"
+import ApiBlog from  '@/api/apiBlog'
 const MinePage = (props) => {
-    let storeArticle = props.storeArticle
+    const [userInfo,setUserInfo] = useState({})
     useEffect(() => {
-        if (props.storeArticle) {
-            this.store.onGetEditText('100023')
+        getuserInfo()
+    },[])
+    const getuserInfo = async()=>{
+        let userId = Cookies.get('userId')
+        let res = await ApiBlog.userInfo({
+            userId
+        })
+        if(res){
+        setUserInfo(res)
         }
-    })
-    return(
-        <p>mine</p>
+       
+    }
+    const loginout = ()=>{
+        let currentCookieSetting = {
+            expires: 1
+          }
+        Object.assign(currentCookieSetting, {})
+        Cookies.set('token','',currentCookieSetting)
+        props.history.replace('/login')
+    }
+    return (
+       <div>
+           <p>用户信息:{userInfo.userName}</p>
+           <button onClick={loginout}>退出登录</button>
+       </div>
     )
-    // return useObserver(() => (
-    //     <div>
-    //         {props.storeArticle && < ArticleDetail
-    //             editArticle={props.editArticle}
-    //         />
-    //         }
-    //     </div>
-    // ))
 }
 export default MinePage

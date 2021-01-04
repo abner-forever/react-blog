@@ -1,0 +1,19 @@
+.form-item{
+    width: 2.5rem;
+    margin: 0 auto;
+}
+.form-input {
+    display: flex;
+    flex-direction: column;
+    
+    input {
+        margin-bottom: .2rem;
+        border: .01rem solid #ccc;
+        height: .3rem;
+        padding: 0 .08rem;
+        border-radius: .04rem;
+        &:focus {
+            border: .01rem solid #ccc;
+        }
+    }
+}

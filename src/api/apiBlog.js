@@ -19,6 +19,18 @@ class ApiBlog {
     updateArticle = (params,type) => {
         return Fetch.post('/api/article/updateArticle', params,type)
     }
+    //登录
+    login = (params,type) => {
+        return Fetch.post('/api/users/login', params,type)
+    }
+    //注册
+    register = (params,type) => {
+        return Fetch.post('/api/users/register', params,type)
+    }
+    //用户信息
+    userInfo = (params,type)=>{
+        return Fetch.get('/api/users/userinfo', params,type)
+    }
 }
 
 export default new ApiBlog()
