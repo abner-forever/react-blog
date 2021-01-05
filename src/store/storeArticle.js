@@ -7,7 +7,6 @@ class Article {
    @observable isModalVisible = false
 
    @action onGetEditText = async (id) => {
-      console.log('ok?');
       let res = await ApiBlog.apiArticleOne({
          id:id
       })

@@ -1,5 +1,5 @@
 import React from 'react'
-import './itemCard.scss'
+import './style.scss'
 function ItemCard(props) {
     let item = props.item
     return (
@@ -11,7 +11,7 @@ function ItemCard(props) {
             <div className='meta'>
                 <span>{item.userName}</span>
                 <span className='update-time'>{item.updateTime||item.createTime}</span>
-                <div onClick={() => props.editArticle(item.id)} className='edit-icon' >编辑</div>
+                {props.isEdit && <div onClick={() => props.editArticle(item.id)} className='edit-icon' >编辑</div>}
             </div>
         </div>
     )

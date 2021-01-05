@@ -1,6 +1,9 @@
 .form-item{
-    width: 2.5rem;
+    width: 3rem;
     margin: 0 auto;
+    padding: .2rem .2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .03);
 }
 .form-input {
     display: flex;
@@ -12,8 +15,19 @@
         height: .3rem;
         padding: 0 .08rem;
         border-radius: .04rem;
+        overflow: hidden;
         &:focus {
-            border: .01rem solid #ccc;
+            border: none;
+            outline: 1px solid steelblue;
         }
+    }
+}
+.form-submit{
+    display: flex;
+    justify-content: space-around;
+    button{
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
     }
 }

@@ -5,13 +5,16 @@ import {
     Link
 } from "react-router-dom";
 import routes from './routers'
-import '@/page/index.scss'
-import Loading from '../components/Loading'
+import '@/index.scss'
+import Loading from '@/components/Loading'
+import Cookies from "js-cookie"
+
 class Index extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentIndex: 0
+            currentIndex: 0,
+            isLogin:false
         }
     }
     _setTabChange = (index) => {
@@ -25,6 +28,13 @@ class Index extends Component {
         this.setState({
             currentIndex: current
         })
+        let token = Cookies.get('token')
+        console.log('token',token);
+        if(token){
+            this.setState({
+                isLogin:true
+            })
+        }
     }
     render() {
         return (
@@ -42,7 +52,7 @@ class Index extends Component {
                             ))
                         }
                         <li className='tab-item-login'>
-                            <a href="/login">登录</a>
+                            { !this.state.isLogin ?<a href="/login">登录</a> :<a href="/mine">我的</a> }
                         </li>
                     </ul>
                 </header>

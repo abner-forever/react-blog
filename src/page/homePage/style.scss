@@ -8,7 +8,12 @@
     -webkit-box-orient: vertical;
 }
 .home-content{
-    padding: 0 16px;
-    // width: 700px;
     background-color: #fff;
+    margin: 0 auto;
+    min-width: 60%;
+    max-width: 9.8rem;
+    min-height: 90%;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
 }

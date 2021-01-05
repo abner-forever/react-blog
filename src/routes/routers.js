@@ -20,7 +20,14 @@ const routes = [
         component: React.lazy(()=>import('../page/editPage')),
         title: '编辑',
         isShowHeader:false
-    }, {
+    },
+    {
+        path: '/addArticle',
+        component: React.lazy(()=>import('../page/editPage')),
+        title: '新增文章',
+        isShowHeader:false
+    },
+     {
         path: '/articledetail',
         component: React.lazy(()=>import('../page/detailPage')),
         title: '文章详情',
@@ -30,7 +37,14 @@ const routes = [
         component: React.lazy(()=>import('../page/minePage')),
         title: '关于我',
         exact: true,
-        isShowHeader:true
+        // isShowHeader:true
+    },
+    {
+        path: '/myArticle',
+        component: React.lazy(()=>import('../page/MyArticle')),
+        title: '我的文章',
+        exact: true,
+        // isShowHeader:true
     }
     ,{
         path: '/login',

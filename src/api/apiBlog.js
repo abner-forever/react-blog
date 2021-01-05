@@ -6,6 +6,9 @@ class ApiBlog {
     apiArticleList = (params) => {
         return Fetch.get('/api/article/articleList', params)
     }
+    getMyArticleList = (params) => {
+        return Fetch.get('/api/article/myarticleList', params)
+    }
     /**
      * 博客详情页
      */
@@ -16,20 +19,27 @@ class ApiBlog {
      * 更新文章
      * /api/article/updateArticle
      */
-    updateArticle = (params,type) => {
-        return Fetch.post('/api/article/updateArticle', params,type)
+    updateArticle = (params) => {
+        return Fetch.post('/api/article/updateArticle', params)
+    }
+    /**
+     * 更新文章
+     * /api/article/updateArticle
+     */
+    addArticle = (params) => {
+        return Fetch.post('/api/article/addArticle', params)
     }
     //登录
-    login = (params,type) => {
-        return Fetch.post('/api/users/login', params,type)
+    login = (params) => {
+        return Fetch.post('/api/users/login', params)
     }
     //注册
     register = (params,type) => {
-        return Fetch.post('/api/users/register', params,type)
+        return Fetch.post('/api/users/register', params)
     }
     //用户信息
     userInfo = (params,type)=>{
-        return Fetch.get('/api/users/userinfo', params,type)
+        return Fetch.get('/api/users/userinfo', params)
     }
 }
 

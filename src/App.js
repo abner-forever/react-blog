@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import {Provider } from 'mobx-react'
 import Store from './store'
 import Page from './page'

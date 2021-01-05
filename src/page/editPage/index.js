@@ -1,7 +1,5 @@
 import React from 'react'
 import Editor from './Editor'
-// 引入编辑器样式
-import 'braft-editor/dist/index.css'
 import { observer, inject } from 'mobx-react'
 @inject('storeArticle')
 @observer
@@ -10,24 +8,34 @@ class EditorPage extends React.Component {
         super(props)
         this.store = this.props.storeArticle
         this.state = {
-            count: 0
+            count: 0,
+            isAdd: false
         }
     }
     componentDidMount() {
-        if (!this.store.editArticle) {
+        let pathName = this.props.location.pathname
+        if (pathName.indexOf('addArticle') === -1) {
+            console.log('1');
             let articleId = this.props.location.pathname.replace('/edit/', '')
+            console.log('articleId', articleId);
             this.store.onGetEditText(articleId)
+
+        } else {
+            this.store.editArticle = ''
+            this.setState({
+                isAdd: true
+            })
         }
+
     }
     render() {
         return (
             <>
-                {
-                    this.store.editArticle && <Editor
-                        editArticle={this.store.editArticle}
-                        count={this.state.count}
-                    />
-                }
+                {(this.store.editArticle || this.state.isAdd) && <Editor
+                    editArticle={this.store.editArticle}
+                    count={this.state.count}
+                    location={this.props.location}
+                />}
             </>
         )
 

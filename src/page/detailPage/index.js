@@ -1,9 +1,7 @@
 import React from 'react'
-import ArticleDetail from '../../components/ArticleDetail'
-// 引入编辑器样式
-import 'braft-editor/dist/index.css'
+import ArticleDetail from '@/components/ArticleDetail'
 import { observer, inject } from 'mobx-react'
-import Loading from '../../components/Loading'
+import Loading from '@/components/Loading'
 @inject('storeArticle')
 @observer
 class DetailPage extends React.Component {
@@ -11,19 +9,24 @@ class DetailPage extends React.Component {
         super(props)
         this.store = this.props.storeArticle
     }
-    componentWillUnmount(){
-        console.log('componentWillUnmount');
+    componentDidMount() {
+        let articleId = this.props.history.location.pathname.split('/')[2] || ''
+        if (!this.store.editArticle && articleId) {
+            this.store.onGetEditText(articleId)
+        }
+    }
+    componentWillUnmount() {
         this.store.editText = ''
     }
     render() {
         return (
-            <div>
+            <>
                 {
-                    this.store.editArticle ?  <ArticleDetail
-                    editArticle={this.store.editArticle}
-                />:<Loading/>
+                    this.store.editArticle ? <ArticleDetail
+                        editArticle={this.store.editArticle}
+                    /> : <Loading />
                 }
-            </div>
+            </>
         )
 
     }

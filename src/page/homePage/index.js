@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import './style.scss'
-import Itemcard from '../../components/home/ItemCard'
-import {Empty } from '../../components'
+import { Empty, ItemCard } from '@/components'
 @inject('storeArticle')
 @observer
 class Home extends Component {
@@ -28,7 +27,7 @@ class Home extends Component {
       <div className='home-content'>
         {
           this.store.articleList && this.store.articleList.map((item, index) => (
-            <Itemcard
+            <ItemCard
               key={index}
               item={item}
               onGetArticle={this.onGetArticle}
@@ -37,7 +36,7 @@ class Home extends Component {
           ))
         }
         {
-          !this.store.articleList && <Empty title='暂无文章'/>
+          !this.store.articleList && <Empty title='暂无文章' />
         }
       </div>
     );

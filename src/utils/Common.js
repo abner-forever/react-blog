@@ -16,7 +16,6 @@ class Common {
         for(let key in params){
            param.push(`${key}=${params[key]}`)
         }
-        console.log('param');
         return url+'?'+param.join('&')
     }
     static getkey(obj) {

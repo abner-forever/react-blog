@@ -21,6 +21,7 @@
     "prismjs": "^1.20.0",
     "react": "^16.8.2",
     "react-app-rewired": "^2.1.0",
+    "react-color": "^2.19.3",
     "react-crons": "^1.7.2",
     "react-dom": "^16.8.2",
     "react-router": "^5.1.2",

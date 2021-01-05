@@ -1,58 +1,70 @@
-import React from 'react'
-// 引入编辑器组件
-import BraftEditor from 'braft-editor'
-// 引入编辑器样式
-import 'braft-editor/dist/index.css'
-import 'braft-extensions/dist/code-highlighter.css'
-import './edit.scss'
-
-import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
+import React, { Component } from 'react'
+import './style.scss'
 import { message, Button, Input } from 'antd'
 import ApiBlog from '@/api/apiBlog'
+import 'braft-editor/dist/index.css'
+import 'braft-extensions/dist/code-highlighter.css'
+import Cookies from "js-cookie"
 
+import BraftEditor from 'braft-editor'
+import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
 const options = {
-    includeEditors: ['editor-id-1'], // 指定该模块对哪些BraftEditor生效，不传此属性则对所有BraftEditor有效
-    excludeEditors: ['editor-id-2']  // 指定该模块对哪些BraftEditor无效
+    them: "dark",
+    includeEditors: ['editor-with-code-highlighter']
 }
-
 BraftEditor.use(CodeHighlighter(options))
-class Editor extends React.Component {
 
+export default class Editor extends Component {
     state = {
         editorState: BraftEditor.createEditorState(null),
-        success: '',
-        articleTitle: this.props.editArticle.title || '默认文章标题',
+        articleTitle: this.props?.editArticle?.title || '',
     }
 
-    async componentDidMount() {
-        const htmlContent = await this.props.editArticle.contents
-        console.log(' BraftEditor.createEditorState(htmlContent)',JSON.parse(htmlContent));
+    componentDidMount() {
+        const htmlContent = this.props?.editArticle?.contents
         this.setState({
             editorState: BraftEditor.createEditorState(htmlContent)
         })
     }
     //点击保存
     submitContent = (editArticle) => {
-        const htmlContent = this.state.editorState.toRAW()
-        this.saveEditorContent(editArticle, htmlContent)
+        const htmlContent = this.state.editorState.toHTML()
+        let pathName = this.props.location.pathname
+        if (pathName.indexOf('addArticle') === -1) {
+            this.updateEditorContent(editArticle, htmlContent)
+
+        }else{
+            this.addEditorContent(htmlContent)
+        }
     }
 
     handleEditorChange = (editorState) => {
         this.setState({ editorState })
     }
-    //提交保存
-    saveEditorContent = async (editArticle, htmlContent) => {
-        // let contents = htmlContent.replace('\\', '\\\\')
-        console.log('contents',JSON.parse(htmlContent));
-        const desc = '1'
+    //更新文章
+    updateEditorContent = async (editArticle, htmlContent) => {
+        let desc = this.state.editorState.toRAW(true).blocks[0].text
         let params = {
             id: editArticle.id,
             title: this.state.articleTitle,
             description: desc,
             contents: htmlContent
         }
-       await ApiBlog.updateArticle(params, 'save')
-        message.success('保存成功');
+        await ApiBlog.updateArticle(params, 'save')
+        message.success("修改成功")
+    }
+    //添加文章
+    addEditorContent = async ( htmlContent) => {
+        const desc = JSON.parse(htmlContent).blocks[0].text
+        let params = {
+            userId:Cookies.get('userId'),
+            user:Cookies.get('userName'),
+            title: this.state.articleTitle||'未命名文章',
+            description: desc,
+            contents: htmlContent
+        }
+        await ApiBlog.addArticle(params)
+        message.success("保存成功")
     }
     onInputChange = (e) => {
         this.setState({
@@ -64,12 +76,15 @@ class Editor extends React.Component {
             editorState: BraftEditor.createEditorState(null),
         })
     }
+    componentWillUnmount(){
+        this._clearText()
+    }
 
     render() {
         const { editorState } = this.state
         const { editArticle } = this.props
         return (
-            <div className="my-component">
+            <div className="content">
                 <div className='title-container'>
                     <Input
                         className='title-input'
@@ -77,7 +92,7 @@ class Editor extends React.Component {
                         defaultValue={this.state.articleTitle}
                         placeholder="文章标题" />
                 </div>
-                <div className='editor-container'>
+                <div className=''>
                     <BraftEditor
                         id="editor-with-code-highlighter"
                         value={editorState}
@@ -96,4 +111,3 @@ class Editor extends React.Component {
     }
 
 }
-export default Editor

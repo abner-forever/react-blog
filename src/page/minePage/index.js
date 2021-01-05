@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
-// 引入编辑器样式
-import 'braft-editor/dist/index.css'
 import Cookies from "js-cookie"
 import ApiBlog from  '@/api/apiBlog'
+import './style.scss'
+
 const MinePage = (props) => {
     const [userInfo,setUserInfo] = useState({})
+    //eslint-disable-next-line
     useEffect(() => {
-        getuserInfo()
-    },[])
-    const getuserInfo = async()=>{
         let userId = Cookies.get('userId')
+        if(!userId) {
+            props.history.replace('/login')
+            return
+        }
+        getuserInfo(userId)
+    },[props.history])
+    const getuserInfo = async(userId)=>{
         let res = await ApiBlog.userInfo({
             userId
         })
@@ -20,15 +25,21 @@ const MinePage = (props) => {
     }
     const loginout = ()=>{
         let currentCookieSetting = {
-            expires: 1
+            expires: -1
           }
         Object.assign(currentCookieSetting, {})
         Cookies.set('token','',currentCookieSetting)
+        Cookies.set('userId','',currentCookieSetting)
+        Cookies.set('userName','',currentCookieSetting)
         props.history.replace('/login')
     }
     return (
-       <div>
+       <div className='content'>
            <p>用户信息:{userInfo.userName}</p>
+           <div className='write-article'>
+                <p onClick={()=>{props.history.push('/addArticle')}}>去写文章</p>
+                <p onClick={()=>{props.history.push('/myArticle')}}>我的文章</p>
+           </div>
            <button onClick={loginout}>退出登录</button>
        </div>
     )
