@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="%PUBLIC_URL%/header.ico" />
@@ -7,43 +8,26 @@
   <meta name="description" content="Abner的博客,个人博客,心得记录">
   <meta name="keywords" content="Abner,Abner的博客,个人博客,心得记录,前端">
   <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="/live2d/css/live2d.css" />
   <title>Abner的博客</title>
 </head>
 
 <body>
   <div id="root"></div>
-  <p id="searchbox"></p>
-  <div class="title">
-    <a href=""></a>
+  <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.min.js"></script>
   <script type="text/javascript">
-    L2Dwidget.init({
-
-      "display": {
-        "position": "left", // 定位位置（"left"/"right"/"top"/"bottom"）
-        "width": 80, // 宽度
-        "height": 150, // 高度
-        "hOffset": 0,
-        "vOffset": 10
-      },
-      "mobile": {
-        "show": false,
-        "scale": 1
-      },
-      "react": {
-        "opacityDefault": 1, // 透明度
-        "opacityOnHover": 0.2
-      },
-
-      "dialog": {
-        enable: true,
-        script: {
-          'tap body': '哎呀',
-          'tap face': '哼',
-        }
-      },
-    });
+    var message_Path = '/live2d/'
+    var home_Path = 'http://foreverheart.com/' //此处修改为你的域名，必须带斜杠
+  </script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/live2d/js/live2d.js"></script>
+  <script type="text/javascript" src="/live2d/js/message.js"></script>
+  <script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/tia/model.json");
   </script>
 </body>
 
