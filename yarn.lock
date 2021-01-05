@@ -9831,7 +9831,7 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-app-rewired@^2.1.0:
+react-app-rewired@^2.1.8:
   version "2.1.8"
   resolved "https://registry.npm.taobao.org/react-app-rewired/download/react-app-rewired-2.1.8.tgz#e192f93b98daf96889418d33d3e86cf863812b56"
   integrity sha1-4ZL5O5ja+WiJQY0z0+hs+GOBK1Y=
