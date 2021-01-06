@@ -1,10 +1,11 @@
 import Fetch from './request'
+import { upLoad } from './upload'
 class ApiBlog {
     /**
      * 博客列表数据
      */
     apiArticleList = (params) => {
-        return Fetch.get('/api/article/articleList', params)
+        return upLoad.get('/api/article/articleList', params)
     }
     getMyArticleList = (params) => {
         return Fetch.get('/api/article/myarticleList', params)
@@ -34,11 +35,14 @@ class ApiBlog {
         return Fetch.post('/api/users/login', params)
     }
     //注册
-    register = (params,type) => {
+    register = (params) => {
         return Fetch.post('/api/users/register', params)
     }
+    uploadHead = (params) => {
+        return upLoad.post('/api/users/head', params)
+    }
     //用户信息
-    userInfo = (params,type)=>{
+    userInfo = (params, type) => {
         return Fetch.get('/api/users/userinfo', params)
     }
 }

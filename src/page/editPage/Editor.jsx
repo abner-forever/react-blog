@@ -55,7 +55,7 @@ export default class Editor extends Component {
     }
     //添加文章
     addEditorContent = async ( htmlContent) => {
-        const desc = JSON.parse(htmlContent).blocks[0].text
+        const desc = this.state.editorState.toRAW(true).blocks[0].text
         let params = {
             userId:Cookies.get('userId'),
             user:Cookies.get('userName'),

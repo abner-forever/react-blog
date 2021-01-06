@@ -1,9 +1,16 @@
 .content{
     padding: .16rem;
     .write-article{
-        margin: .2rem 0;
+        
         p{
+            margin: .1rem 0;
             cursor: pointer;
         }
+    }
+    .head{
+        width: .5rem;
+        height: .5rem;
+        border-radius: 50%;
+        overflow: hidden;
     }
 }
