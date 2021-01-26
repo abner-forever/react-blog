@@ -23,6 +23,19 @@ const MyArticle = (props) => {
     const editArticle = (articleId) => {
         props.history.push(`/edit/${articleId}`)
     }
+    //删除某一条数据
+    const deleteArticle = async (id)=>{
+        await ApiBlog.removeArticle({
+            id
+        })
+        let newlist= []
+        articleList.map((item,index)=>{
+            if(item.id !== id){
+                newlist.push(item)
+            }
+        })
+        setArticleList(newlist)
+    }
     return (
         <div className='content'>
             {
@@ -33,6 +46,7 @@ const MyArticle = (props) => {
                         isEdit={true}
                         onGetArticle={onGetArticle}
                         editArticle={editArticle}
+                        deleteArticle={deleteArticle}
                     />
                 ))
             }

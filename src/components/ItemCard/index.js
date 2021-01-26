@@ -12,6 +12,7 @@ function ItemCard(props) {
                 <span>{item.userName}</span>
                 <span className='update-time'>{item.updateTime||item.createTime}</span>
                 {props.isEdit && <div onClick={() => props.editArticle(item.id)} className='edit-icon' >编辑</div>}
+                {props.isEdit && <div onClick={() => props.deleteArticle(item.id)} className='edit-icon' >删除</div>}
             </div>
         </div>
     )

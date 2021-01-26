@@ -30,6 +30,9 @@ class ApiBlog {
     addArticle = (params) => {
         return Fetch.post('/api/article/addArticle', params)
     }
+    removeArticle = (params)=>{
+        return Fetch.post('/api/article/removeArticle', params)
+    }
     //登录
     login = (params) => {
         return Fetch.post('/api/users/login', params)

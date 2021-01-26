@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import './style.scss'
 import ApiBlog from '@/api/apiBlog'
 import Cookies from "js-cookie"
-import { Upload, message } from 'antd';
+import { Button, message } from 'antd';
 import { LoadingOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
-import ImgCrop from 'antd-img-crop';
 const Login = (props) => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -99,9 +98,9 @@ const Login = (props) => {
     const registerItem = () => {
         return (
             <div>
-
+                <p>用户登录</p>
                 <label htmlFor="head">
-                    <ImgCrop rotate>
+                    {/* <ImgCrop rotate>
 
                         <Upload
                             name="avatar"
@@ -112,31 +111,29 @@ const Login = (props) => {
                             beforeUpload={beforeUpload}
                             onChange={handlePhoto}
                             onRemove={removeImg}
-                        // customRequest={uploadImg}
                         >
                             {imageUrl ? <div className='head-image'>
                                 <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
                                 < DeleteOutlined className='delete-icon' />
                             </div> : uploadButton}
                         </Upload>
-                    </ImgCrop>
+                    </ImgCrop> */}
 
-                    <input
+                    {/* <input
                         name='head'
                         type="file"
                         ref={headRef}
                         accept=".jpg,.jpeg,.png"	//限制文件类型
                         hidden	//隐藏input
                         onChange={(event) => handleChange(event)} />
-                    <span onClick={() => { headRef.current.click() }}>添加头像</span>
+                    <span onClick={() => { headRef.current.click() }}>添加头像</span> */}
                 </label>
-                <img src="/" alt="" />
                 <div className='form-input'>
                     <input onChange={(e) => { setUserName(e.target.value) }} type="text" name='userName' value={userName} />
                     <input onChange={(e) => { setPassword(e.target.value) }} type="password" name='passWord' value={password} />
                 </div>
                 <div className='form-submit'>
-                    <button onClick={register}>注册</button>
+                    <Button type={'primary'} onClick={login}>登录</Button>
                 </div>
             </div>
         )
@@ -147,9 +144,6 @@ const Login = (props) => {
                 {
                     registerItem()
                 }
-                <div className='form-submit'>
-                    <button onClick={login}>登录</button>
-                </div>
             </div>
         </div>
     )

@@ -32,7 +32,6 @@ class Http {
                 body: JSON.stringify(body)
             }
         }
-        console.log(headers, body, '11');
         return new Promise((resolve, reject) => {
             fetch(this.baseUrl + url, initParams).then(response => response.json()).then((res) => {
                 resolve(res)
