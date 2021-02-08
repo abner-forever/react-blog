@@ -35,7 +35,7 @@ const routes = [
     },
     {
         path: '/myArticle',
-        component: React.lazy(()=>import('../page/myArticle')),
+        component: React.lazy(()=>import('../page/MyArticle')),
         title: '我的文章',
         exact: true,
         isShowHeader:false
