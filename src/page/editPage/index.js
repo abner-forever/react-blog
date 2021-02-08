@@ -1,6 +1,7 @@
 import React from 'react'
 import Editor from './Editor'
 import { observer, inject } from 'mobx-react'
+import { runInAction } from 'mobx'
 @inject('storeArticle')
 @observer
 class EditorPage extends React.Component {
@@ -15,13 +16,14 @@ class EditorPage extends React.Component {
     componentDidMount() {
         let pathName = this.props.location.pathname
         if (pathName.indexOf('addArticle') === -1) {
-            console.log('1');
             let articleId = this.props.location.pathname.replace('/edit/', '')
             console.log('articleId', articleId);
             this.store.onGetEditText(articleId)
 
         } else {
-            this.store.editArticle = ''
+            runInAction(() => {
+                this.store.editArticle = ''
+            })
             this.setState({
                 isAdd: true
             })

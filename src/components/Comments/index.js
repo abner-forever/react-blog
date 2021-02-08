@@ -1,0 +1,72 @@
+import React, { useState, useEffect } from 'react'
+import ApiBlog from '@/api/apiBlog'
+import './style.scss'
+import { Button, Input, message } from 'antd'
+import Cookies from "js-cookie"
+
+const PageNotFound = (props) => {
+    // const [iscommentShow, setiscommentShow] = useState(true)
+    const [commentList, setCommentList] = useState([])
+    const [comment, setComment] = useState()
+    let userName = Cookies.get('userName')
+    let { id } = props || {}
+    useEffect(() => {
+        getCommentList(); // eslint-disable-next-line 
+    }, [])
+
+    const getCommentList = async () => {
+        let res = await ApiBlog.getCommentList({ id });
+        setCommentList(res)
+        console.log('commentList', res);
+    }
+    const addComment = async () => {
+
+        if (!userName) {
+            message.warn('请登录后再评论');
+            return;
+        }
+        let params = {
+            name: userName,
+            content: comment,
+            postid: id,
+        }
+        await ApiBlog.addComment(params);
+        getCommentList();
+        setComment('')
+    }
+    const onRemoveComment = async (id) => {
+        await ApiBlog.removeComment({ id });
+        let newCommentList = commentList.filter((item) => item.id !== id)
+        setCommentList(newCommentList)
+    }
+    return (
+        <div className='comment-box'>
+            <div className="commnt-input">
+                <div>
+                    <img src="" alt="" />
+                </div>
+                <div className='input-box'>
+                    <Input placeholder='输入评论...' type="text" value={comment} onChange={(e) => { setComment(e.target.value) }} />
+                    <Button type={'primary'} disabled={!comment} onClick={addComment}>评论</Button>
+                </div>
+            </div>
+            <div className='comment-list'>
+                {
+                    commentList.length > 0 ? commentList.map((item, index) => (
+                        <div className='comment-item' key={index}>
+                            <div className='user-icon'>
+                                <img src={item.avator} alt="" />
+                            </div>
+                            <div className='comment-detail'>
+                                <span className='user-name'>{item.name}</span>
+                                <p className='comments'>{item.content}</p>
+                                {userName === item.name && <span className='remove-icon' onClick={() => onRemoveComment(item.id)}>删除</span>}
+                            </div>
+                        </div>
+                    )) : <div>暂无评论</div>
+                }
+            </div>
+        </div>
+    )
+}
+export default PageNotFound

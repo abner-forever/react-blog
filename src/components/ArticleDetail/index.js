@@ -18,7 +18,7 @@ class ArticleDetail extends React.Component {
         const { title, contents, userName, updateTime, createTime } = this.props.editArticle
         const htmlContent = contents
         return (
-            <div className='content'>
+            <div className='detail-content'>
                 <p className="detail-title">{title}</p>
                 <div className='title-desc'>
                     <span>作者：{userName}</span>

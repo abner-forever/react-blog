@@ -29,7 +29,7 @@ const MyArticle = (props) => {
             id
         })
         let newlist= []
-        articleList.map((item,index)=>{
+        articleList.forEach((item)=>{
             if(item.id !== id){
                 newlist.push(item)
             }
@@ -37,7 +37,7 @@ const MyArticle = (props) => {
         setArticleList(newlist)
     }
     return (
-        <div className='content'>
+        <div className='content-item'>
             {
                 articleList.length>0 && articleList.map((item, index) => (
                     <ItemCard

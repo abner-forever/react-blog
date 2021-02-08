@@ -11,7 +11,7 @@ module.exports = function (app) {
       })
   );
   app.use(
-    createProxyMiddleware('/upload',
+    createProxyMiddleware('/commonstatic',
       {
         // target: 'http://foreverheart.top', 
         target: 'http://localhost:8080',

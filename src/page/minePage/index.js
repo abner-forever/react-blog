@@ -35,11 +35,11 @@ const MinePage = (props) => {
         props.history.replace('/login')
     }
     return (
-        <div className='content'>
-            <div>
-                <img className='head' src={userInfo.avatar} alt="" />
-                <p>用户信息:{userInfo.userName}</p>
+        <div className='content-item'>
+            <div className='userinfo'>
+                <img className='head' src={userInfo.avator} alt="" />
             </div>
+            <p>用户信息:{userInfo.userName}</p>
             <div className='write-article'>
                 <p onClick={() => { props.history.push('/addArticle') }}>去写文章</p>
                 <p onClick={() => { props.history.push('/myArticle') }}>我的文章</p>

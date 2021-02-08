@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component,  } from 'react'
 import './style.scss'
 import { message, Button, Input } from 'antd'
 import ApiBlog from '@/api/apiBlog'
 import 'braft-editor/dist/index.css'
 import 'braft-extensions/dist/code-highlighter.css'
 import Cookies from "js-cookie"
+import { commonStore } from '@/utils/store'
 
 import BraftEditor from 'braft-editor'
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
@@ -19,8 +20,8 @@ export default class Editor extends Component {
         editorState: BraftEditor.createEditorState(null),
         articleTitle: this.props?.editArticle?.title || '',
     }
-
     componentDidMount() {
+        console.log('commonStore.history',);
         const htmlContent = this.props?.editArticle?.contents
         this.setState({
             editorState: BraftEditor.createEditorState(htmlContent)
@@ -52,6 +53,7 @@ export default class Editor extends Component {
         }
         await ApiBlog.updateArticle(params, 'save')
         message.success("修改成功")
+        commonStore.location.history.replace('/')
     }
     //添加文章
     addEditorContent = async ( htmlContent) => {
@@ -65,6 +67,7 @@ export default class Editor extends Component {
         }
         await ApiBlog.addArticle(params)
         message.success("保存成功")
+        commonStore.location.history.replace('/')
     }
     onInputChange = (e) => {
         this.setState({
@@ -84,7 +87,7 @@ export default class Editor extends Component {
         const { editorState } = this.state
         const { editArticle } = this.props
         return (
-            <div className="content">
+            <div className="edit-content">
                 <div className='title-container'>
                     <Input
                         className='title-input'

@@ -1,21 +1,15 @@
 import React from 'react'
-
+import HomePage from '../page/homePage'
 // 路由表配置
 const routes = [
     {
         path: '/',
-        component: React.lazy(()=>import('../page/homePage')),
-        exact: true,
-        title: '首页',
-        isShowHeader:false
-    },
-    {
-        path: '/index',
-        component: React.lazy(()=>import('../page/homePage')),
+        component: HomePage,
         exact: true,
         title: '首页',
         isShowHeader:true
-    }, {
+    },
+   {
         path: '/edit',
         component: React.lazy(()=>import('../page/editPage')),
         title: '编辑',
@@ -37,14 +31,14 @@ const routes = [
         component: React.lazy(()=>import('../page/minePage')),
         title: '关于我',
         exact: true,
-        // isShowHeader:true
+        isShowHeader:false
     },
     {
         path: '/myArticle',
-        component: React.lazy(()=>import('../page/MyArticle')),
+        component: React.lazy(()=>import('../page/myArticle')),
         title: '我的文章',
         exact: true,
-        // isShowHeader:true
+        isShowHeader:false
     }
     ,{
         path: '/login',

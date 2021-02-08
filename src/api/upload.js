@@ -1,12 +1,10 @@
 import Http from '@/utils/http'
 import { message } from 'antd'
 export const upLoad = new Http({
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'multipart/form-data;' },
     interceptors:{
         request(body){
-            let adapterData = {
-                ...body
-            }
+            let adapterData = body
             return adapterData
         },
         response(res){

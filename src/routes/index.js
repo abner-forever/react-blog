@@ -1,75 +1,84 @@
-import React, { Component, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import {
     BrowserRouter as Router,
+    Link,
+    withRouter,
     Route,
-    Link
+    Switch
 } from "react-router-dom";
-import routes from './routers'
+import routerConfig from './routers'
 import '@/index.scss'
-import Loading from '@/components/Loading'
+import { Loading, PageNotFound } from '@/components'
 import Cookies from "js-cookie"
+import { commonStore } from '@/utils/store'
+const Routers = () => {
+    return (
+        <Router>
+            <AuthToken />
+        </Router>
+    )
+}
 
-class Index extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            currentIndex: 0,
-            isLogin:false
+const AuthToken = withRouter(() => {
+    let token = Cookies.get('token')
+    const path = window.location.pathname
+    routerConfig.forEach((item, index) => {
+        if (path === item.path) {
+            if (item.isShowHeader) {
+                item.current = true
+            } else {
+            }
+        } else {
+            item.current = false
         }
-    }
-    _setTabChange = (index) => {
-        this.setState({
-            currentIndex: index
-        })
-        localStorage.setItem('currentIndex', index)
-    }
-    componentDidMount() {
-        const current = Number(localStorage.getItem('currentIndex'))
-        this.setState({
-            currentIndex: current
-        })
-        let token = Cookies.get('token')
-        console.log('token',token);
-        if(token){
-            this.setState({
-                isLogin:true
-            })
-        }
-    }
-    render() {
-        return (
-            <Router >
-                <header className='header-container'>
-                    <ul className='banner'>
+    })
+    return (
+        <div>
+            <header className='header-container'>
+                <ul className='banner'>
+                    <div>
                         {
-                            routes.map((item, index) => (
+                            routerConfig.map((item, index) => (
                                 item.isShowHeader && <li
-                                    onClick={() => this._setTabChange(index)}
                                     key={index}
-                                    className={this.state.currentIndex === index ? 'active-tab' : 'tab-item'}>
+                                    className={item.current ? 'active-tab' : 'tab-item'}>
                                     <Link to={item.path}>{item.title}</Link>
                                 </li>
                             ))
                         }
-                        <li className='tab-item-login'>
-                            { !this.state.isLogin ?<a href="/login">登录</a> :<a href="/mine">我的</a> }
-                        </li>
-                    </ul>
-                </header>
-                    <Suspense fallback={<div><Loading /></div>} >
-                        <div>
-                            
-                        </div>
-                        <div className='content-box'>
+                    </div>
+                    <li className='tab-item'>
+                        {!token ? <a href="/login">登录</a> : <a href="/mine">我的</a>}
+                    </li>
+                </ul>
+            </header>
+            <Suspense fallback={<div><Loading /></div>} >
+                <div className='content-box'>
+                    <div className='content'>
+                        {/* Route 组件必须是Switch 的子元素 不然正常渲染的时候 404页面也会渲染 */}
+                        <Switch >
                             {
-                                routes.map((item, ind) => (
-                                    <Route exact={item.exact} key={ind} path={item.path} component={item.component} />
+                                routerConfig.map((item, index) => (
+                                    <Route
+                                        exact={item.exact}
+                                        key={index}
+                                        path={item.path}
+                                        component={(location) => {
+                                            commonStore.getHistory({ ...location })
+                                            return <item.component {...location} />
+                                        }}
+                                    />
                                 ))
                             }
-                        </div>
-                    </Suspense>
-            </Router>
-        )
-    }
-}
-export default Index
+                            <Route component={PageNotFound} />
+                        </Switch>
+                    </div>
+                </div>
+
+            </Suspense>
+        </div>
+    )
+})
+
+
+export default Routers

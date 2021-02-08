@@ -17,6 +17,25 @@ class ApiBlog {
         return Fetch.get('/api/article/getArticle', params)
     }
     /**
+     * 添加文章评论
+     */
+    addComment = (params)=>{
+        return Fetch.post('/api/article/addComment', params)
+    }
+      /**
+     * 删除文章评论
+     */
+    removeComment = (params)=>{
+        return Fetch.post('/api/article/removeComment', params)
+    }
+    /**
+     * 获得文章评论
+     */
+    getCommentList = (params)=>{
+        return Fetch.get('/api/article/getArticleComments', params)
+    }
+    
+    /**
      * 更新文章
      * /api/article/updateArticle
      */
@@ -30,6 +49,7 @@ class ApiBlog {
     addArticle = (params) => {
         return Fetch.post('/api/article/addArticle', params)
     }
+    
     removeArticle = (params)=>{
         return Fetch.post('/api/article/removeArticle', params)
     }
