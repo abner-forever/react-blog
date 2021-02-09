@@ -1,5 +1,4 @@
 ;(function(designWidth, maxWidth){
-    console.log('flex');
     var doc = document,
 	win = window,
 	docEl = doc.documentElement,

@@ -1,8 +1,10 @@
 
 import Http from '@/utils/http'
 import { message } from 'antd'
-
+const { HOST } = require('../config')
+console.log('HOST',HOST);
 const upLoad = new Http({
+    HOST:HOST,
     headers: { 'Content-Type': 'application/json' },
     interceptors: {
         request(body) {

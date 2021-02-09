@@ -1,7 +1,7 @@
 import Common from './Common'
 class Http {
     constructor(config) {
-        this.baseUrl = config.baseUrl || ''
+        this.HOST = config.HOST || ''
         this.headers = config.headers || {}
         if (config.interceptors && typeof config.interceptors.response === 'function') {
             this.interceptorsResponse = config.interceptors.response
@@ -33,7 +33,7 @@ class Http {
             }
         }
         return new Promise((resolve, reject) => {
-            fetch(this.baseUrl + url, initParams).then(response => response.json()).then((res) => {
+            fetch(this.HOST + url, initParams).then(response => response.json()).then((res) => {
                 resolve(res)
             }).catch((err) => {
                 reject(err)

@@ -3,7 +3,7 @@ import './style.scss'
 import ApiBlog from '@/api/apiBlog'
 import Cookies from "js-cookie"
 import { Button, message, Upload, } from 'antd';
-import { LoadingOutlined, PlusOutlined, UploadOutlined } from '@ant-design/icons';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop'
 const Login = (props) => {
     const [userName, setUserName] = useState('');
@@ -59,11 +59,10 @@ const Login = (props) => {
         if (!isJpgOrPng) {
             message.error('You can only upload JPG/PNG file!');
         }
-        const isLt2M = file.size / 1024 / 1024 < 10;
+        const isLt2M = file.size / 1024 / 1024 < 2;
         if (!isLt2M) {
             message.error('Image must smaller than 2MB!');
         }
-        console.log('beforeUpload', isLt2M, isJpgOrPng, file, [...fileList, file]);
         setFileList([...fileList, file])
         getImgBase64Data(file, (url) => {
             setImageUrl(url)
@@ -92,9 +91,8 @@ const Login = (props) => {
             console.log('file', file);
             formData.append('avator', file);
         });
-        console.log('formData', formData);
         setLoading(true)
-        return new Promise((resolve)=>{
+        return new Promise((resolve) => {
             fetch('/api/users/head', {
                 method: "POST",
                 body: formData //自动修改请求头,formdata的默认请求头的格式是 multipart/form-data
@@ -109,12 +107,17 @@ const Login = (props) => {
     }
 
     //检查密码两次输入的密码是否一致
-    const checkPasswords = () => {
-        if (password !== checkPassword) {
+    const checkPasswords = (e) => {
+        let newPassword = e.target.value.trim();
+        setCheckPassword(newPassword)
+        if (newPassword.length === password.length && password !== newPassword) {
+            setButtonDisable(true)
             message.warn('密码不一致')
         } else {
-            if (userName !== '') {
+            if (userName !== '' && password === newPassword) {
                 setButtonDisable(false)
+            } else {
+                setButtonDisable(true)
             }
         }
     }
@@ -158,12 +161,11 @@ const Login = (props) => {
                             </div> : uploadButton}
                         </Upload>
                     </ImgCrop>
-                    <UploadOutlined />
                 </label>
                 <div className='form-input'>
                     <input placeholder='请输入账号' onChange={(e) => { setUserName(e.target.value) }} type="text" name='userName' value={userName} />
                     <input placeholder='请输入密码' onChange={(e) => { setPassword(e.target.value) }} type="password" name='passWord' value={password} />
-                    <input placeholder='再次确认密码' onBlur={checkPasswords} onChange={(e) => { setCheckPassword(e.target.value) }} type="password" name='checkPassWord' value={checkPassword} />
+                    <input placeholder='再次确认密码' onBlur={checkPasswords} onChange={checkPasswords} type="password" name='checkPassWord' value={checkPassword} />
                 </div>
                 <div className='form-submit'>
                     <Button disabled={buttonDisable} type={'primary'} onClick={register}>注册</Button>

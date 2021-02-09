@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ApiBlog from '@/api/apiBlog'
-import './style.scss'
 import { Button, Input, message } from 'antd'
 import Cookies from "js-cookie"
+import './style.scss'
 
 const PageNotFound = (props) => {
     // const [iscommentShow, setiscommentShow] = useState(true)
@@ -17,8 +17,8 @@ const PageNotFound = (props) => {
     const getCommentList = async () => {
         let res = await ApiBlog.getCommentList({ id });
         setCommentList(res)
-        console.log('commentList', res);
     }
+    
     const addComment = async () => {
 
         if (!userName) {
