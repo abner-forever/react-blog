@@ -13,7 +13,6 @@ module.exports = function (app) {
   app.use(
     createProxyMiddleware('/commonstatic',
       {
-        // target: 'http://foreverheart.top', 
         target: HOST,
         changeOrigin: true
       })
