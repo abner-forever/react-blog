@@ -12,25 +12,23 @@ let options = {
 BraftEditor.use(CodeHighlighter(options))
 
 //文章详细信息
-class ArticleDetail extends React.Component {
+const ArticleDetail = (props) => {
 
-    render() {
-        const { title, contents, userName, updateTime, createTime } = this.props.editArticle
-        const htmlContent = contents
-        return (
-            <div className='detail-content'>
-                <p className="detail-title">{title}</p>
-                <div className='title-desc'>
-                    <span>作者：{userName}</span>
-                    <span style={{ marginLeft: 8 }}> 发布于：{updateTime || createTime}</span>
-                </div>
-                {/* 文章内容 */}
-                <div
-                    id='editor-with-code-highlighter'
-                    className='articae-content braft-output-content '
-                    dangerouslySetInnerHTML={{ __html: BraftEditor.createEditorState(htmlContent,options).toHTML() }} />
+    const { title, contents, userName, updateTime, createTime } = props.editArticle
+    const htmlContent = contents
+    return (
+        <div className='detail-content'>
+            <p className="detail-title">{title}</p>
+            <div className='title-desc'>
+                <span>作者：{userName}</span>
+                <span style={{ marginLeft: 8 }}> 发布于：{updateTime || createTime}</span>
             </div>
-        )
-    }
+            {/* 文章内容 */}
+            <div
+                id='editor-with-code-highlighter'
+                className='articae-content braft-output-content '
+                dangerouslySetInnerHTML={{ __html: BraftEditor.createEditorState(htmlContent, options).toHTML() }} />
+        </div>
+    )
 }
 export default ArticleDetail 

@@ -1,4 +1,8 @@
+const HOST = 'http://foreverheart.top'
+const NODE_HOST = 'http://localhost:8080'
 
-exports.HOST = 'http://foreverheart.top'
-let env =  process.env.NODE_ENV
-console.log(env);
+let env = process.env.NODE_ENV
+
+let currentHost = env === 'development' ? NODE_HOST : HOST
+
+exports.HOST = currentHost
