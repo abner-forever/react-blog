@@ -142,9 +142,8 @@ const Login = (props) => {
     const registerForm = () => {
         return (
             <div >
-                <p>注册</p>
                 <label htmlFor="head" title='头像'>
-                    <span> 头像</span>
+                    <span>头像</span>
                     <ImgCrop rotate>
                         <Upload
                             name="avator"
@@ -175,9 +174,9 @@ const Login = (props) => {
     }
     return (
         <div className='content-item'>
-            <p onClick={() => {
+            <p className='sign-in-up' onClick={() => {
                 setIsLogin(!isLogin);
-            }}>{isLogin ? '注册' : '登录'}</p>
+            }}>{isLogin ? '登录' : '注册'}</p>
             <div className='form-item'>
                 {
                     isLogin ? loginForm() : registerForm()
