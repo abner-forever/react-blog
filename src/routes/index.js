@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import routerConfig from './routers'
 import '@/index.scss'
-import { Loading, PageNotFound } from '@/components'
+import { Loading, PageNotFound,Footer } from '@/components'
 import Cookies from "js-cookie"
 import { commonStore } from '@/utils/store'
 const Routers = () => {
@@ -74,8 +74,8 @@ const AuthToken = withRouter(() => {
                         </Switch>
                     </div>
                 </div>
-
             </Suspense>
+            <Footer/>
         </div>
     )
 })
