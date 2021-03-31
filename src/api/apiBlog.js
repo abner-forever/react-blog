@@ -1,5 +1,5 @@
 import Fetch from './request'
-import { upLoad } from './upload'
+import upLoad from './upload'
 class ApiBlog {
     /**
      * 博客列表数据

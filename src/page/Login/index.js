@@ -20,7 +20,6 @@ const Login = (props) => {
             userName: userName,
             password: password
         })
-        console.log(res);
         if (res && res.token) {
             let currentCookieSetting = {
                 expires: 1

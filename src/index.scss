@@ -153,6 +153,7 @@ li{
   padding-top: .16rem;
   background-color: #f4f5f5;
   padding-bottom: .32rem;
+  min-height: 720px;
 }
 
 .content{
@@ -166,4 +167,11 @@ li{
 }
 .content-item{
   background-color: #fff;
+}
+.tab-item{
+  .user-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
 }

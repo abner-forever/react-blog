@@ -4,5 +4,4 @@ const HOST = 'http://foreverheart.top'
 let env = process.env.NODE_ENV
 
 let currentHost = env === 'development' ? HOST : HOST
-
 exports.HOST = currentHost

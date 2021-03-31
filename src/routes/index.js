@@ -33,7 +33,7 @@ const AuthToken = withRouter(() => {
         }
     })
     return (
-        <div>
+        <div >
             <header className='header-container'>
                 <ul className='banner'>
                     <div>
@@ -48,7 +48,9 @@ const AuthToken = withRouter(() => {
                         }
                     </div>
                     <li className='tab-item'>
-                        {!token ? <a href="/login">登录</a> : <a href="/mine">我的</a>}
+                        {!token ? <a href="/login">登录</a> : <a href="/mine">
+                            <img className='user-icon' src={Cookies.get('avator')} alt=""/>
+                            </a>}
                     </li>
                 </ul>
             </header>

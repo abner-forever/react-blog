@@ -5,6 +5,7 @@ import Loading from './Loading'
 import Comments from './Comments'
 import Video from './Video'
 import Footer from './Footer'
+import WallPaper from './WallPaper'
 
 
 export {
@@ -14,5 +15,6 @@ export {
     PageNotFound,
     Comments,
     Video,
-    Footer
+    Footer,
+    WallPaper
 }

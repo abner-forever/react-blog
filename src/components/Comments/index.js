@@ -63,7 +63,7 @@ const PageNotFound = (props) => {
                                 {userName === item.name && <span className='remove-icon' onClick={() => onRemoveComment(item.id)}>删除</span>}
                             </div>
                         </div>
-                    )) : <div>暂无评论</div>
+                    )) : <div className='no-comment'>暂无评论</div>
                 }
             </div>
         </div>

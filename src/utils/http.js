@@ -1,6 +1,7 @@
 import Common from './Common'
 class Http {
     constructor(config) {
+        console.log(config);
         this.HOST = config.HOST || ''
         this.headers = config.headers || {}
         if (config.interceptors && typeof config.interceptors.response === 'function') {
@@ -33,6 +34,7 @@ class Http {
             }
         }
         return new Promise((resolve, reject) => {
+            console.log('this.HOST + url',this.HOST , url);
             fetch(this.HOST + url, initParams).then(response => response.json()).then((res) => {
                 resolve(res)
             }).catch((err) => {
@@ -60,6 +62,7 @@ class Http {
     async get(url, body, options) {
         let { headers = {} } = options || {}
         headers = { ...this.headers, headers }
+        console.log('url',url);
         let res = await this.commonFetch(url, headers, body, options)
         return new Promise((resolve, reject) => {
             try {

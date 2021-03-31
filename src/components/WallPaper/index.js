@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import './style.scss'
 const WallPaper = () => {
     let defaultImg = require('@img/default.png')
@@ -7,7 +7,6 @@ const WallPaper = () => {
     const getImage = () => {
         let url = `https://infinity-api.infinitynewtab.com/random-wallpaper?_=${Date.now()}`
         fetch(url).then(response => response.json()).then((res) => {
-            console.log('res', res);
             setImgurl(res.data[0].src.mediumSrc || res.data[0]?.src?.rawSrc)
         })
     }
@@ -18,7 +17,7 @@ const WallPaper = () => {
     }, [imgUrl])
     return (
         <>
-            <div className='wall-paper' style={{backgroundImage:`url(${defaultImg})`}} >
+            <div className='wall-paper' style={{ backgroundImage: `url(${defaultImg})` }} >
                 <img style={{ ...size }} src={imgUrl} alt='' />
             </div>
             <div className='change-btn' onClick={() => {
@@ -29,4 +28,4 @@ const WallPaper = () => {
         </>
     )
 }
-export default WallPaper
+export default memo(WallPaper)

@@ -1,18 +1,20 @@
 import Http from '@/utils/http'
 import { message } from 'antd'
-export const upLoad = new Http({
+import { HOST } from '../config'
+const upLoad = new Http({
+    // HOST: HOST,
     headers: { 'Content-Type': 'multipart/form-data;' },
-    interceptors:{
-        request(body){
+    interceptors: {
+        request(body) {
             let adapterData = body
             return adapterData
         },
-        response(res){
-            return new Promise((resolve,reject)=>{
+        response(res) {
+            return new Promise((resolve, reject) => {
                 let code = res.code
-                if(code === 200){
+                if (code === 200) {
                     resolve(res.data)
-                }else if(code === 500){
+                } else if (code === 500) {
                     message.warn(res.msg)
                     reject(res.msg)
                 }
@@ -20,3 +22,4 @@ export const upLoad = new Http({
         }
     }
 })
+export default upLoad

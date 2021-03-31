@@ -1,5 +1,6 @@
 .content-item {
     padding: .16rem;
+
     .write-article {
         p {
             margin: .1rem 0;
@@ -7,16 +8,67 @@
         }
     }
 
-    .userinfo {
-        width: .5rem;
-        height: .5rem;
-        border-radius: 50%;
-        overflow: hidden;
-        // border: 1px solid #ccc;
+
+
+    .user-content {
+        display: flex;
+        align-items: center;
+
+        .head {
+            width: .6rem;
+            height: .6rem;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .userinfo {
+            padding-left: 20px;
+
+            .user-name {
+                font-size: 24px;
+                color: #333;
+            }
+
+        }
+
+
+
+        .write-article {
+            display: flex;
+
+            p {
+                margin-right: 10px;
+            }
+        }
+
+        .social-content {
+            position: absolute;
+            right: .16rem;
+            top: .16rem;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .content-item {
+        .user-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            .userinfo {
+                padding-left: 0;
+                text-align: center;
+            }
+            .social-content {
+                position:static;
+            }
+        }
     }
 
-    .head {
-        width: 100%;
-        height: 100%;
-    }
 }
