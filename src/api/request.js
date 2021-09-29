@@ -1,7 +1,7 @@
 
 import Http from '@/utils/http'
 import { message } from 'antd'
-import { HOST } from '../config'
+// import { HOST } from '../config'
 const request = new Http({
     // HOST:HOST,
     headers: { 'Content-Type': 'application/json' },
